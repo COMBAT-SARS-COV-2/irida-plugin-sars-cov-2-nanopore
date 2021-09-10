@@ -33,7 +33,7 @@
       "annotation" : "",
       "inputs" : [ {
         "description" : "",
-        "name" : "Reads"
+        "name" : "sequence_reads_list_single"
       } ],
       "content_id" : null,
       "tool_id" : null
