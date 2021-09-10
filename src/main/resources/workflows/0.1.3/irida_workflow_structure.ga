@@ -11,7 +11,7 @@
         "uuid" : "5c6e6e8c-fb66-44d3-9625-956705a82a7e"
       } ],
       "input_connections" : { },
-      "label" : "sequence_reads_list_paired",
+      "label" : "sequence_reads_list_single",
       "id" : 0,
       "tool_state" : "{\"optional\": false, \"collection_type\": \"list\"}",
       "errors" : null,
