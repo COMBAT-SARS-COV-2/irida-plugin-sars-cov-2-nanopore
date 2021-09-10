@@ -5,6 +5,7 @@
   <version>0.1.3</version>
   <analysisType>ARTIC_PIPELINE</analysisType>
   <inputs>
+    <sequenceReadsSingle>sequence_reads_list_single</sequenceReadsSingle>
     <reference>reference</reference>
     <requiresSingleSample>true</requiresSingleSample>
   </inputs>
