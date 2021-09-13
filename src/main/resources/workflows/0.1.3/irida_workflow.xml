@@ -63,8 +63,7 @@
     </parameter>
   </parameters>
   <outputs>
-    <output name="guppyplex_filtered.fastq" fileName="guppyplex_filtered.fastq"/>
-    <output name="ivar_consensus.fasta" fileName="ivar_consensus.fasta"/>
+    <output name="artic_guppyplex.fastq" fileName="artic_guppyplex.fastq"/>
     <output name="alignment_report.tsv" fileName="alignment_report.tsv"/>
     <output name="qc.csv" fileName="qc.csv"/>
     <output name="qc.png" fileName="qc.png"/>
