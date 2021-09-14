@@ -482,7 +482,7 @@
         "uuid" : "e4ea9098-a6fb-4f18-8c63-1541a330814b"
       } ],
       "input_connections" : { },
-      "label" : "Reads",
+      "label" : "sequence_reads_list_single",
       "id" : 0,
       "tool_state" : "{\"optional\": false, \"collection_type\": \"list\"}",
       "errors" : null,
@@ -504,7 +504,7 @@
       "annotation" : "",
       "inputs" : [ {
         "description" : "",
-        "name" : "Reads"
+        "name" : "sequence_reads_list_single"
       } ],
       "content_id" : null,
       "tool_id" : null
