@@ -206,13 +206,13 @@
         "type" : "tabular"
       } ],
       "tool_shed_repository" : {
-        "changeset_revision" : "b74b9a7b3e3b",
+        "changeset_revision" : "56b1a13d9680",
         "name" : "nextclade",
         "owner" : "iuc",
         "tool_shed" : "toolshed.g2.bx.psu.edu"
       },
       "type" : "tool",
-      "tool_version" : "1.2.3+galaxy0",
+      "tool_version" : "1.4.1+galaxy0",
       "annotation" : "",
       "inputs" : [ {
         "description" : "runtime parameter for tool Nextclade",
@@ -227,8 +227,8 @@
           "output_name" : "report_tsv"
         }
       },
-      "content_id" : "toolshed.g2.bx.psu.edu/repos/iuc/nextclade/nextclade/1.2.3+galaxy0",
-      "tool_id" : "toolshed.g2.bx.psu.edu/repos/iuc/nextclade/nextclade/1.2.3+galaxy0"
+      "content_id" : "toolshed.g2.bx.psu.edu/repos/iuc/nextclade/nextclade/1.4.1+galaxy0",
+      "tool_id" : "toolshed.g2.bx.psu.edu/repos/iuc/nextclade/nextclade/1.4.1+galaxy0"
     },
     "7" : {
       "workflow_outputs" : [ {
