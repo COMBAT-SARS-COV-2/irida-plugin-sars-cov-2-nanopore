@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iridaWorkflow>
+  <id>F5140BA2-EFF9-46B4-B3D6-D3A1BFB1C442</id>
+  <name>irida-sars-cov2-nanopore-plugin</name>
+  <version>0.1.5</version>
+  <analysisType>ARTIC_PIPELINE</analysisType>
+  <inputs>
+    <sequenceReadsSingle>sequence_reads_list_single</sequenceReadsSingle>
+    <reference>reference</reference>
+    <requiresSingleSample>true</requiresSingleSample>
+  </inputs>
+  <parameters>
+    <parameter name="artic_minion-3-medaka_model" defaultValue="r941_min_high_g360">
+      <toolParameter toolId="0c947470-4bda-455a-9b4e-d45227654380" parameterName="medaka_model"/>
+    </parameter>
+    <parameter name="artic_minion-3-primer_scheme_source.primer_scheme_source_selector" defaultValue="tool_data_table">
+      <toolParameter toolId="0c947470-4bda-455a-9b4e-d45227654380" parameterName="primer_scheme_source.primer_scheme_source_selector"/>
+    </parameter>
+    <parameter name="artic_minion-3-primer_scheme_source.primer_scheme_bedfile" defaultValue="SARS-CoV-2-ARTICv1">
+      <toolParameter toolId="0c947470-4bda-455a-9b4e-d45227654380" parameterName="primer_scheme_source.primer_scheme_bedfile"/>
+    </parameter>
+    <parameter name="artic_minion-3-reference_source.reference_source_selector" defaultValue="history">
+      <toolParameter toolId="0c947470-4bda-455a-9b4e-d45227654380" parameterName="reference_source.reference_source_selector"/>
+    </parameter>
+    <parameter name="text_processing-4-adv_opts.adv_opts_selector" defaultValue="basic">
+      <toolParameter toolId="baab2955-92d2-48c8-9cab-dfa836a35e35" parameterName="adv_opts.adv_opts_selector"/>
+    </parameter>
+    <parameter name="text_processing-4-code" defaultValue="/^&gt;/s/Consensus_(.*)_threshold_.*/\1/">
+      <toolParameter toolId="baab2955-92d2-48c8-9cab-dfa836a35e35" parameterName="code"/>
+    </parameter>
+    <parameter name="qc-5-qc_type_conditional.qc_type" defaultValue="--illumina">
+      <toolParameter toolId="ca248d26-5888-4071-93bd-6df50ab92c4a" parameterName="qc_type_conditional.qc_type"/>
+    </parameter>
+    <parameter name="jvarkit_wgscoverageplotter-6-adv.min_contig_length" defaultValue="0">
+      <toolParameter toolId="e7f12302-3035-4c6d-9f40-bff8df9be16b" parameterName="adv.min_contig_length"/>
+    </parameter>
+    <parameter name="jvarkit_wgscoverageplotter-6-adv.include_contig_regex" defaultValue="">
+      <toolParameter toolId="e7f12302-3035-4c6d-9f40-bff8df9be16b" parameterName="adv.include_contig_regex"/>
+    </parameter>
+    <parameter name="jvarkit_wgscoverageplotter-6-adv.min_mapq" defaultValue="1">
+      <toolParameter toolId="e7f12302-3035-4c6d-9f40-bff8df9be16b" parameterName="adv.min_mapq"/>
+    </parameter>
+    <parameter name="jvarkit_wgscoverageplotter-6-adv.percentile" defaultValue="median">
+      <toolParameter toolId="e7f12302-3035-4c6d-9f40-bff8df9be16b" parameterName="adv.percentile"/>
+    </parameter>
+    <parameter name="jvarkit_wgscoverageplotter-6-adv.max_depth" defaultValue="-1">
+      <toolParameter toolId="e7f12302-3035-4c6d-9f40-bff8df9be16b" parameterName="adv.max_depth"/>
+    </parameter>
+    <parameter name="jvarkit_wgscoverageplotter-6-adv.skip_contig_regex" defaultValue="">
+      <toolParameter toolId="e7f12302-3035-4c6d-9f40-bff8df9be16b" parameterName="adv.skip_contig_regex"/>
+    </parameter>
+    <parameter name="jvarkit_wgscoverageplotter-6-adv.disable_paired_overlap" defaultValue="false">
+      <toolParameter toolId="e7f12302-3035-4c6d-9f40-bff8df9be16b" parameterName="adv.disable_paired_overlap"/>
+    </parameter>
+    <parameter name="jvarkit_wgscoverageplotter-6-adv.points" defaultValue="false">
+      <toolParameter toolId="e7f12302-3035-4c6d-9f40-bff8df9be16b" parameterName="adv.points"/>
+    </parameter>
+    <parameter name="jvarkit_wgscoverageplotter-6-reference.source" defaultValue="history">
+      <toolParameter toolId="e7f12302-3035-4c6d-9f40-bff8df9be16b" parameterName="reference.source"/>
+    </parameter>
+    <parameter name="jvarkit_wgscoverageplotter-6-adv.sample_filter.filter_by_sample" defaultValue="false">
+      <toolParameter toolId="e7f12302-3035-4c6d-9f40-bff8df9be16b" parameterName="adv.sample_filter.filter_by_sample"/>
+    </parameter>
+    <parameter name="jvarkit_wgscoverageplotter-6-format" defaultValue="PNG">
+      <toolParameter toolId="e7f12302-3035-4c6d-9f40-bff8df9be16b" parameterName="format"/>
+    </parameter>
+    <parameter name="jvarkit_wgscoverageplotter-6-adv.clip" defaultValue="false">
+      <toolParameter toolId="e7f12302-3035-4c6d-9f40-bff8df9be16b" parameterName="adv.clip"/>
+    </parameter>
+    <parameter name="pangolin-7-db.source" defaultValue="download">
+      <toolParameter toolId="0cdcca89-4a26-4c22-9349-39e723942cf6" parameterName="db.source"/>
+    </parameter>
+    <parameter name="nextclade-8-adv.advanced_options" defaultValue="no">
+      <toolParameter toolId="268a4439-77b9-4f70-8dbd-28e1f7ff43f7" parameterName="adv.advanced_options"/>
+    </parameter>
+    <parameter name="nextclade-8-organism" defaultValue="sars-cov-2">
+      <toolParameter toolId="268a4439-77b9-4f70-8dbd-28e1f7ff43f7" parameterName="organism"/>
+    </parameter>
+  </parameters>
+  <outputs>
+    <output name="guppyplex_filtered.fastq" fileName="guppyplex_filtered.fastq"/>
+    <output name="alignment_report.tsv" fileName="alignment_report.tsv"/>
+    <output name="consensus.fasta" fileName="consensus.fasta"/>
+    <output name="qc.csv" fileName="qc.csv"/>
+    <output name="qc.json" fileName="qc.json"/>
+    <output name="qc.png" fileName="qc.png"/>
+    <output name="plot_output.png" fileName="plot_output.png"/>
+    <output name="pangolin.csv" fileName="pangolin.csv"/>
+    <output name="nextclade.tsv" fileName="nextclade.tsv"/>
+  </outputs>
+  <toolRepositories>
+    <repository>
+      <name>artic_guppyplex</name>
+      <owner>iuc</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>7a82006f7c05</revision>
+    </repository>
+    <repository>
+      <name>jvarkit_wgscoverageplotter</name>
+      <owner>iuc</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>ac048a34cac3</revision>
+    </repository>
+    <repository>
+      <name>artic_minion</name>
+      <owner>iuc</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>f212134e204c</revision>
+    </repository>
+    <repository>
+      <name>pangolin</name>
+      <owner>iuc</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>debfccc4d65b</revision>
+    </repository>
+    <repository>
+      <name>qc</name>
+      <owner>sanbi-uwc</owner>
+      <url>https://testtoolshed.g2.bx.psu.edu</url>
+      <revision>6bdec8c62aec</revision>
+    </repository>
+    <repository>
+      <name>text_processing</name>
+      <owner>bgruening</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>9ff72e942410</revision>
+    </repository>
+    <repository>
+      <name>nextclade</name>
+      <owner>iuc</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>d070e316da5d</revision>
+    </repository>
+  </toolRepositories>
+</iridaWorkflow>
