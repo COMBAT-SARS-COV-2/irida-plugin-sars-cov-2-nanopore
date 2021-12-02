@@ -67,7 +67,7 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 
 	private static final String QC_FILE = "qc.json";
 	private static final String NEXT_CLADE_FILE = "nextclade.tsv";
-	private static final String PANGOLIN_FILE = "pangolin.csv";
+	private static final String PANGOLIN_FILE = "pangolin.tsv";
 
 	private static final Splitter SPLITTER = Splitter.on('\t');
 	

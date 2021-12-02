@@ -178,7 +178,7 @@
       },
       "label" : null,
       "id" : 8,
-      "tool_state" : "{\"adv\": {\"advanced_options\": \"no\", \"__current_case__\": 1}, \"include_header\": \"false\", \"input_fasta\": {\"__class__\": \"RuntimeValue\"}, \"organism\": \"sars-cov-2\", \"outputs\": [\"report_tsv\"], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+      "tool_state" : "{\"adv\": {\"advanced_options\": \"no\", \"__current_case__\": 1}, \"include_header\": \"true\", \"input_fasta\": {\"__class__\": \"RuntimeValue\"}, \"organism\": \"sars-cov-2\", \"outputs\": [\"report_tsv\"], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
       "errors" : null,
       "position" : {
         "bottom" : 671.8999938964844,
@@ -235,7 +235,7 @@
       },
       "label" : null,
       "id" : 7,
-      "tool_state" : "{\"alignment\": \"false\", \"db\": {\"source\": \"download\", \"__current_case__\": 0}, \"include_header\": \"false\", \"input1\": {\"__class__\": \"RuntimeValue\"}, \"max_ambig\": \"0.5\", \"min_length\": \"10000\", \"usher\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+      "tool_state" : "{\"alignment\": \"false\", \"db\": {\"source\": \"download\", \"__current_case__\": 0}, \"include_header\": \"true\", \"input1\": {\"__class__\": \"RuntimeValue\"}, \"max_ambig\": \"0.5\", \"min_length\": \"10000\", \"usher\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
       "errors" : null,
       "position" : {
         "bottom" : 479.1000061035156,
@@ -269,7 +269,7 @@
       "post_job_actions" : {
         "RenameDatasetActionoutput1" : {
           "action_arguments" : {
-            "newname" : "pangolin.csv"
+            "newname" : "pangolin.tsv"
           },
           "action_type" : "RenameDatasetAction",
           "output_name" : "output1"

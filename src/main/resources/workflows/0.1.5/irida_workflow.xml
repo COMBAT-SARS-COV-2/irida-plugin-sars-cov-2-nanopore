@@ -85,7 +85,7 @@
     <output name="qc.json" fileName="qc.json"/>
     <output name="qc.png" fileName="qc.png"/>
     <output name="plot_output.png" fileName="plot_output.png"/>
-    <output name="pangolin.csv" fileName="pangolin.csv"/>
+    <output name="pangolin.tsv" fileName="pangolin.tsv"/>
     <output name="nextclade.tsv" fileName="nextclade.tsv"/>
   </outputs>
   <toolRepositories>
