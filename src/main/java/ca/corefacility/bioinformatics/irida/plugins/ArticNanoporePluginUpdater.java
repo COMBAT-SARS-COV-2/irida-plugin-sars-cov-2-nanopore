@@ -113,12 +113,15 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 
 		List<String> values = SPLITTER.splitToList(line);
 
-		if (columnNames.size() != values.size()) {
+		int numHeaderColumns = columnNames.size();
+		int numDataColumns = values.size();
+		if (numHeaderColumns != numDataColumns) {
 			throw new PostProcessingException("Mismatch in number of column names [" + columnNames.size()
-					+ "] and number of files [" + values.size() + "] in results file [" + resultsFile + "]");
+					+ "] and number of fields [" + values.size() + "] in results file [" + resultsFile + "]");
 		}
 
-		for (int i = 0; i < columnNames.size(); i++) {
+		// only process up to numDataColumns, because of the issue with nextclade errors column mentioned above
+		for (int i = 0; i < numDataColumns; i++) {
 			dataMap.put(columnNames.get(i), values.get(i));
 		}
 		return dataMap;
