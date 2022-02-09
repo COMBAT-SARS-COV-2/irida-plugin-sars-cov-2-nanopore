@@ -1,0 +1,606 @@
+{
+  "a_galaxy_workflow" : "true",
+  "annotation" : "Artic Nanopore: Workflow for generating SARS-Cov2 consensus and variants from viral amplicon data. Us\nes iVar toolsuite.",
+  "format-version" : "0.1",
+  "name" : "ARTIC Nanopore (0.1.6)",
+  "steps" : {
+    "9" : {
+      "workflow_outputs" : [ {
+        "label" : null,
+        "output_name" : "output",
+        "uuid" : "8c432897-35fb-4e0b-a26f-15351ab80297"
+      } ],
+      "input_connections" : {
+        "input" : {
+          "id" : 5,
+          "output_name" : "output3"
+        }
+      },
+      "label" : null,
+      "id" : 9,
+      "tool_state" : "{\"input\": {\"__class__\": \"RuntimeValue\"}, \"output_format\": \"pdf\", \"resize\": \"100.0\", \"transformations\": null, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+      "errors" : null,
+      "position" : {
+        "bottom" : 610.6000061035156,
+        "height" : 113.60000610351562,
+        "left" : 1303,
+        "right" : 1503,
+        "top" : 497,
+        "width" : 200,
+        "x" : 1303,
+        "y" : 497
+      },
+      "name" : "Image Converter",
+      "uuid" : "227654ad-ac9c-4f4f-a63f-f8c454223875",
+      "outputs" : [ {
+        "name" : "output",
+        "type" : "png"
+      } ],
+      "tool_shed_repository" : {
+        "changeset_revision" : "32b40811ed51",
+        "name" : "graphicsmagick_image_convert",
+        "owner" : "bgruening",
+        "tool_shed" : "testtoolshed.g2.bx.psu.edu"
+      },
+      "type" : "tool",
+      "tool_version" : "1.3.31+galaxy1",
+      "annotation" : "",
+      "inputs" : [ {
+        "description" : "runtime parameter for tool Image Converter",
+        "name" : "input"
+      } ],
+      "post_job_actions" : {
+        "RenameDatasetActionoutput" : {
+          "action_arguments" : {
+            "newname" : "output_file.pdf"
+          },
+          "action_type" : "RenameDatasetAction",
+          "output_name" : "output"
+        }
+      },
+      "content_id" : "testtoolshed.g2.bx.psu.edu/repos/bgruening/graphicsmagick_image_convert/graphicsmagick_image_convert/1.3.31+galaxy1",
+      "tool_id" : "testtoolshed.g2.bx.psu.edu/repos/bgruening/graphicsmagick_image_convert/graphicsmagick_image_convert/1.3.31+galaxy1"
+    },
+    "3" : {
+      "workflow_outputs" : [ {
+        "label" : "ARTIC minion on input dataset(s): trimmed alignment",
+        "output_name" : "alignment_trimmed",
+        "uuid" : "1212b6a1-e4b2-412f-ac6c-4d11bfe865c0"
+      }, {
+        "label" : "ARTIC minion on input dataset(s): alignment report",
+        "output_name" : "alignment_report",
+        "uuid" : "744d2d75-af3c-4552-9d50-0f60cd314d65"
+      }, {
+        "label" : "ARTIC minion on input dataset(s): analysis log",
+        "output_name" : "analysis_log",
+        "uuid" : "d904f6c6-0727-4984-bce2-45ba402c114a"
+      }, {
+        "label" : "ARTIC minion on input dataset(s): consensus coverage mask",
+        "output_name" : "coverage_mask",
+        "uuid" : "f3106aac-8a9d-4fae-bf3f-8f11ba54d65d"
+      }, {
+        "label" : "ARTIC minion on input dataset(s): consensus sequence",
+        "output_name" : "consensus_fasta",
+        "uuid" : "7e1a21c9-a177-4723-95eb-55350e44c357"
+      }, {
+        "label" : "ARTIC minion on input dataset(s): variants pass",
+        "output_name" : "variants_pass_vcf",
+        "uuid" : "5e4c2773-e716-4b60-8dcd-b02536f13df4"
+      }, {
+        "label" : "ARTIC minion on input dataset(s): variants fail",
+        "output_name" : "variants_fail_vcf",
+        "uuid" : "3bd123a6-6758-4a91-aa9b-6770f9bc18ed"
+      }, {
+        "label" : "ARTIC minion on input dataset(s): medaka variant calls",
+        "output_name" : "variants_merged_vcf",
+        "uuid" : "7578eae8-b571-4f5c-9eeb-9414c3abb469"
+      } ],
+      "input_connections" : {
+        "read_file" : {
+          "id" : 2,
+          "output_name" : "output1"
+        },
+        "reference_source|reference" : {
+          "id" : 1,
+          "output_name" : "output"
+        }
+      },
+      "label" : null,
+      "id" : 3,
+      "tool_state" : "{\"bwa\": \"false\", \"medaka_model\": \"r941_min_high_g360\", \"normalise\": \"0\", \"primer_scheme_source\": {\"primer_scheme_source_selector\": \"tool_data_table\", \"__current_case__\": 0, \"primer_scheme_bedfile\": \"SARS-CoV-2-ARTICv1\"}, \"read_file\": {\"__class__\": \"ConnectedValue\"}, \"reference_source\": {\"reference_source_selector\": \"history\", \"__current_case__\": 1, \"reference\": {\"__class__\": \"ConnectedValue\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+      "errors" : null,
+      "position" : {
+        "bottom" : 631.7000122070312,
+        "height" : 683.2000122070312,
+        "left" : 734.5,
+        "right" : 934.5,
+        "top" : -51.5,
+        "width" : 200,
+        "x" : 734.5,
+        "y" : -51.5
+      },
+      "name" : "ARTIC minion",
+      "uuid" : "3e6ab12e-9646-4b2c-ae19-b8e216c5648f",
+      "outputs" : [ {
+        "name" : "alignment_trimmed",
+        "type" : "bam"
+      }, {
+        "name" : "alignment_report",
+        "type" : "tabular"
+      }, {
+        "name" : "variants_merged_vcf",
+        "type" : "vcf_bgzip"
+      }, {
+        "name" : "variants_fail_vcf",
+        "type" : "vcf_bgzip"
+      }, {
+        "name" : "variants_pass_vcf",
+        "type" : "vcf_bgzip"
+      }, {
+        "name" : "consensus_fasta",
+        "type" : "fasta"
+      }, {
+        "name" : "coverage_mask",
+        "type" : "tabular"
+      }, {
+        "name" : "analysis_log",
+        "type" : "txt"
+      } ],
+      "tool_shed_repository" : {
+        "changeset_revision" : "f212134e204c",
+        "name" : "artic_minion",
+        "owner" : "iuc",
+        "tool_shed" : "toolshed.g2.bx.psu.edu"
+      },
+      "type" : "tool",
+      "tool_version" : "1.2.1+galaxy0",
+      "annotation" : "",
+      "inputs" : [ ],
+      "post_job_actions" : {
+        "RenameDatasetActionalignment_report" : {
+          "action_arguments" : {
+            "newname" : "alignment_report.tsv"
+          },
+          "action_type" : "RenameDatasetAction",
+          "output_name" : "alignment_report"
+        },
+        "RenameDatasetActionconsensus_fasta" : {
+          "action_arguments" : {
+            "newname" : "consensus.fasta"
+          },
+          "action_type" : "RenameDatasetAction",
+          "output_name" : "consensus_fasta"
+        }
+      },
+      "content_id" : "toolshed.g2.bx.psu.edu/repos/iuc/artic_minion/artic_minion/1.2.1+galaxy0",
+      "tool_id" : "toolshed.g2.bx.psu.edu/repos/iuc/artic_minion/artic_minion/1.2.1+galaxy0"
+    },
+    "4" : {
+      "workflow_outputs" : [ {
+        "label" : null,
+        "output_name" : "output",
+        "uuid" : "1f03ef77-1fef-4356-909d-a367aed76198"
+      } ],
+      "input_connections" : {
+        "infile" : {
+          "id" : 3,
+          "output_name" : "consensus_fasta"
+        }
+      },
+      "label" : "Masked Genome",
+      "id" : 4,
+      "tool_state" : "{\"adv_opts\": {\"adv_opts_selector\": \"basic\", \"__current_case__\": 0}, \"code\": \"/^>/s/Consensus_(.*)_threshold_.*/\\\\1/\", \"infile\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+      "errors" : null,
+      "position" : {
+        "bottom" : 219.6999969482422,
+        "height" : 93.19999694824219,
+        "left" : 1022.5,
+        "right" : 1222.5,
+        "top" : 126.5,
+        "width" : 200,
+        "x" : 1022.5,
+        "y" : 126.5
+      },
+      "name" : "Text transformation",
+      "uuid" : "626dcfbc-fbd5-47ae-92f0-43005fe645ef",
+      "outputs" : [ {
+        "name" : "output",
+        "type" : "input"
+      } ],
+      "tool_shed_repository" : {
+        "changeset_revision" : "9ff72e942410",
+        "name" : "text_processing",
+        "owner" : "bgruening",
+        "tool_shed" : "toolshed.g2.bx.psu.edu"
+      },
+      "type" : "tool",
+      "tool_version" : "1.1.1",
+      "annotation" : "",
+      "inputs" : [ ],
+      "post_job_actions" : { },
+      "content_id" : "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sed_tool/1.1.1",
+      "tool_id" : "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sed_tool/1.1.1"
+    },
+    "8" : {
+      "workflow_outputs" : [ {
+        "label" : "Nextclade on input dataset(s) (TSV report)",
+        "output_name" : "report_tsv",
+        "uuid" : "5a9b4179-57ec-4278-a0d2-08573d13691e"
+      } ],
+      "input_connections" : {
+        "input_fasta" : {
+          "id" : 4,
+          "output_name" : "output"
+        }
+      },
+      "label" : null,
+      "id" : 8,
+      "tool_state" : "{\"adv\": {\"advanced_options\": \"no\", \"__current_case__\": 1}, \"include_header\": \"true\", \"input_fasta\": {\"__class__\": \"ConnectedValue\"}, \"organism\": \"sars-cov-2\", \"outputs\": [\"report_tsv\"], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+      "errors" : null,
+      "position" : {
+        "bottom" : 444.8999938964844,
+        "height" : 154.39999389648438,
+        "left" : 1300.5,
+        "right" : 1500.5,
+        "top" : 290.5,
+        "width" : 200,
+        "x" : 1300.5,
+        "y" : 290.5
+      },
+      "name" : "Nextclade",
+      "uuid" : "ac85bba8-2662-4137-8adb-588e5735eaa5",
+      "outputs" : [ {
+        "name" : "report_tsv",
+        "type" : "tabular"
+      } ],
+      "tool_shed_repository" : {
+        "changeset_revision" : "d070e316da5d",
+        "name" : "nextclade",
+        "owner" : "iuc",
+        "tool_shed" : "toolshed.g2.bx.psu.edu"
+      },
+      "type" : "tool",
+      "tool_version" : "1.4.5+galaxy0",
+      "annotation" : "",
+      "inputs" : [ ],
+      "post_job_actions" : {
+        "RenameDatasetActionreport_tsv" : {
+          "action_arguments" : {
+            "newname" : "nextclade.tsv"
+          },
+          "action_type" : "RenameDatasetAction",
+          "output_name" : "report_tsv"
+        }
+      },
+      "content_id" : "toolshed.g2.bx.psu.edu/repos/iuc/nextclade/nextclade/1.4.5+galaxy0",
+      "tool_id" : "toolshed.g2.bx.psu.edu/repos/iuc/nextclade/nextclade/1.4.5+galaxy0"
+    },
+    "7" : {
+      "workflow_outputs" : [ {
+        "label" : "pangolin on input dataset(s)",
+        "output_name" : "output1",
+        "uuid" : "1b49f50f-bd4e-4dc8-95cd-1e903adac82a"
+      } ],
+      "input_connections" : {
+        "input1" : {
+          "id" : 4,
+          "output_name" : "output"
+        }
+      },
+      "label" : null,
+      "id" : 7,
+      "tool_state" : "{\"alignment\": \"false\", \"db\": {\"source\": \"download\", \"__current_case__\": 0}, \"include_header\": \"true\", \"input1\": {\"__class__\": \"ConnectedValue\"}, \"max_ambig\": \"0.5\", \"min_length\": \"10000\", \"usher\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+      "errors" : null,
+      "position" : {
+        "bottom" : 252.10000610351562,
+        "height" : 113.60000610351562,
+        "left" : 1300.5,
+        "right" : 1500.5,
+        "top" : 138.5,
+        "width" : 200,
+        "x" : 1300.5,
+        "y" : 138.5
+      },
+      "name" : "Pangolin",
+      "uuid" : "474e8502-8774-4224-8f5f-505bb73378db",
+      "outputs" : [ {
+        "name" : "output1",
+        "type" : "tabular"
+      } ],
+      "tool_shed_repository" : {
+        "changeset_revision" : "83a69484cb87",
+        "name" : "pangolin",
+        "owner" : "iuc",
+        "tool_shed" : "toolshed.g2.bx.psu.edu"
+      },
+      "type" : "tool",
+      "tool_version" : "3.1.16+galaxy0",
+      "annotation" : "",
+      "inputs" : [ ],
+      "post_job_actions" : {
+        "RenameDatasetActionoutput1" : {
+          "action_arguments" : {
+            "newname" : "pangolin.tsv"
+          },
+          "action_type" : "RenameDatasetAction",
+          "output_name" : "output1"
+        }
+      },
+      "content_id" : "toolshed.g2.bx.psu.edu/repos/iuc/pangolin/pangolin/3.1.16+galaxy0",
+      "tool_id" : "toolshed.g2.bx.psu.edu/repos/iuc/pangolin/pangolin/3.1.16+galaxy0"
+    },
+    "5" : {
+      "workflow_outputs" : [ {
+        "label" : null,
+        "output_name" : "output3",
+        "uuid" : "ed1d8c2d-ae7c-4a62-8e88-182431c88fb4"
+      }, {
+        "label" : null,
+        "output_name" : "output2",
+        "uuid" : "3d4c5e9c-cf27-43e6-8bf0-50449effe3d9"
+      }, {
+        "label" : null,
+        "output_name" : "output1",
+        "uuid" : "2fde0645-3336-40a9-8d0c-2e2c66cf0e31"
+      } ],
+      "input_connections" : {
+        "input_bam" : {
+          "id" : 3,
+          "output_name" : "alignment_trimmed"
+        },
+        "input_cons_fasta" : {
+          "id" : 3,
+          "output_name" : "consensus_fasta"
+        },
+        "input_ref" : {
+          "id" : 1,
+          "output_name" : "output"
+        }
+      },
+      "label" : null,
+      "id" : 5,
+      "tool_state" : "{\"input_bam\": {\"__class__\": \"ConnectedValue\"}, \"input_cons_fasta\": {\"__class__\": \"ConnectedValue\"}, \"input_ref\": {\"__class__\": \"ConnectedValue\"}, \"qc_type_conditional\": {\"qc_type\": \"--illumina\", \"__current_case__\": 0}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+      "errors" : null,
+      "position" : {
+        "bottom" : 717.1000061035156,
+        "height" : 459.6000061035156,
+        "left" : 1022.5,
+        "right" : 1222.5,
+        "top" : 257.5,
+        "width" : 200,
+        "x" : 1022.5,
+        "y" : 257.5
+      },
+      "name" : "Quality Control (COG-UK QC)",
+      "uuid" : "347df716-cafe-4341-998e-cebb316abb88",
+      "outputs" : [ {
+        "name" : "output1",
+        "type" : "csv"
+      }, {
+        "name" : "output2",
+        "type" : "json"
+      }, {
+        "name" : "output3",
+        "type" : "png"
+      } ],
+      "tool_shed_repository" : {
+        "changeset_revision" : "6bdec8c62aec",
+        "name" : "qc",
+        "owner" : "sanbi-uwc",
+        "tool_shed" : "testtoolshed.g2.bx.psu.edu"
+      },
+      "type" : "tool",
+      "tool_version" : "0.1.1",
+      "annotation" : "",
+      "inputs" : [ ],
+      "post_job_actions" : {
+        "RenameDatasetActionoutput1" : {
+          "action_arguments" : {
+            "newname" : "qc.csv"
+          },
+          "action_type" : "RenameDatasetAction",
+          "output_name" : "output1"
+        },
+        "RenameDatasetActionoutput2" : {
+          "action_arguments" : {
+            "newname" : "qc.json"
+          },
+          "action_type" : "RenameDatasetAction",
+          "output_name" : "output2"
+        },
+        "RenameDatasetActionoutput3" : {
+          "action_arguments" : {
+            "newname" : "qc.png"
+          },
+          "action_type" : "RenameDatasetAction",
+          "output_name" : "output3"
+        }
+      },
+      "content_id" : "testtoolshed.g2.bx.psu.edu/repos/sanbi-uwc/qc/qc_cog_uk/0.1.1",
+      "tool_id" : "testtoolshed.g2.bx.psu.edu/repos/sanbi-uwc/qc/qc_cog_uk/0.1.1"
+    },
+    "6" : {
+      "workflow_outputs" : [ {
+        "label" : null,
+        "output_name" : "plot_output",
+        "uuid" : "fb14b05c-ef3e-46e4-92eb-cc96dde7f3e1"
+      } ],
+      "input_connections" : {
+        "alignment_file" : {
+          "id" : 3,
+          "output_name" : "alignment_trimmed"
+        },
+        "reference|hist_genome" : {
+          "id" : 1,
+          "output_name" : "output"
+        }
+      },
+      "label" : null,
+      "id" : 6,
+      "tool_state" : "{\"adv\": {\"disable_paired_overlap\": \"false\", \"include_contig_regex\": \"\", \"min_mapq\": \"1\", \"max_depth\": \"-1\", \"clip\": \"false\", \"min_contig_length\": \"0\", \"percentile\": \"median\", \"points\": \"false\", \"skip_contig_regex\": \"\", \"sample_filter\": {\"filter_by_sample\": \"false\", \"__current_case__\": 1}}, \"alignment_file\": {\"__class__\": \"ConnectedValue\"}, \"dimension\": \"1000x500\", \"format\": \"SVG\", \"reference\": {\"source\": \"history\", \"__current_case__\": 1, \"hist_genome\": {\"__class__\": \"ConnectedValue\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+      "errors" : null,
+      "position" : {
+        "bottom" : 899.5,
+        "height" : 144,
+        "left" : 1022.5,
+        "right" : 1222.5,
+        "top" : 755.5,
+        "width" : 200,
+        "x" : 1022.5,
+        "y" : 755.5
+      },
+      "name" : "BAM Coverage Plotter",
+      "uuid" : "d20c20de-b5b5-4570-acd6-7469c3980353",
+      "outputs" : [ {
+        "name" : "plot_output",
+        "type" : "png"
+      } ],
+      "tool_shed_repository" : {
+        "changeset_revision" : "ac048a34cac3",
+        "name" : "jvarkit_wgscoverageplotter",
+        "owner" : "iuc",
+        "tool_shed" : "toolshed.g2.bx.psu.edu"
+      },
+      "type" : "tool",
+      "tool_version" : "20201223+galaxy0",
+      "annotation" : "",
+      "inputs" : [ ],
+      "post_job_actions" : {
+        "RenameDatasetActionplot_output" : {
+          "action_arguments" : {
+            "newname" : "plot_output.svg"
+          },
+          "action_type" : "RenameDatasetAction",
+          "output_name" : "plot_output"
+        }
+      },
+      "content_id" : "toolshed.g2.bx.psu.edu/repos/iuc/jvarkit_wgscoverageplotter/jvarkit_wgscoverageplotter/20201223+galaxy0",
+      "tool_id" : "toolshed.g2.bx.psu.edu/repos/iuc/jvarkit_wgscoverageplotter/jvarkit_wgscoverageplotter/20201223+galaxy0"
+    },
+    "1" : {
+      "workflow_outputs" : [ {
+        "label" : null,
+        "output_name" : "output",
+        "uuid" : "91d7b835-4e70-4984-892f-429c02337d02"
+      } ],
+      "input_connections" : { },
+      "label" : "reference",
+      "id" : 1,
+      "tool_state" : "{\"optional\": false}",
+      "errors" : null,
+      "position" : {
+        "bottom" : 681.3000030517578,
+        "height" : 61.80000305175781,
+        "left" : 456.5,
+        "right" : 656.5,
+        "top" : 619.5,
+        "width" : 200,
+        "x" : 456.5,
+        "y" : 619.5
+      },
+      "name" : "Input dataset",
+      "uuid" : "c2c70622-cc68-4fb1-b0b5-03830b43cc2a",
+      "outputs" : [ ],
+      "type" : "data_input",
+      "tool_version" : null,
+      "annotation" : "",
+      "inputs" : [ {
+        "description" : "",
+        "name" : "reference"
+      } ],
+      "content_id" : null,
+      "tool_id" : null
+    },
+    "0" : {
+      "workflow_outputs" : [ {
+        "label" : null,
+        "output_name" : "output",
+        "uuid" : "088e188e-8e66-4c5c-b024-24762f69b822"
+      } ],
+      "input_connections" : { },
+      "label" : "sequence_reads_list_single",
+      "id" : 0,
+      "tool_state" : "{\"optional\": false, \"collection_type\": \"list\"}",
+      "errors" : null,
+      "position" : {
+        "bottom" : 58.69999694824219,
+        "height" : 82.19999694824219,
+        "left" : 178.5,
+        "right" : 378.5,
+        "top" : -23.5,
+        "width" : 200,
+        "x" : 178.5,
+        "y" : -23.5
+      },
+      "name" : "Input dataset collection",
+      "uuid" : "d40e5aa2-9dd5-4151-8018-e23bcc66bb00",
+      "outputs" : [ ],
+      "type" : "data_collection_input",
+      "tool_version" : null,
+      "annotation" : "",
+      "inputs" : [ {
+        "description" : "",
+        "name" : "sequence_reads_list_single"
+      } ],
+      "content_id" : null,
+      "tool_id" : null
+    },
+    "2" : {
+      "workflow_outputs" : [ {
+        "label" : null,
+        "output_name" : "output1",
+        "uuid" : "fd6aac3c-e797-469b-88bd-f24cb6f326b3"
+      } ],
+      "input_connections" : {
+        "input" : {
+          "id" : 0,
+          "output_name" : "output"
+        }
+      },
+      "label" : null,
+      "id" : 2,
+      "tool_state" : "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"max_length\": \"700\", \"min_length\": \"400\", \"skip_quality_check\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+      "errors" : null,
+      "position" : {
+        "bottom" : 84.5,
+        "height" : 134,
+        "left" : 456.5,
+        "right" : 656.5,
+        "top" : -49.5,
+        "width" : 200,
+        "x" : 456.5,
+        "y" : -49.5
+      },
+      "name" : "ARTIC guppyplex",
+      "uuid" : "1f1d58f9-425b-4a0d-8beb-fde11b499e65",
+      "outputs" : [ {
+        "name" : "output1",
+        "type" : "fastq"
+      } ],
+      "tool_shed_repository" : {
+        "changeset_revision" : "7a82006f7c05",
+        "name" : "artic_guppyplex",
+        "owner" : "iuc",
+        "tool_shed" : "toolshed.g2.bx.psu.edu"
+      },
+      "type" : "tool",
+      "tool_version" : "1.2.1+galaxy0",
+      "annotation" : "",
+      "inputs" : [ ],
+      "post_job_actions" : {
+        "RenameDatasetActionoutput1" : {
+          "action_arguments" : {
+            "newname" : "guppyplex_filtered.fastq"
+          },
+          "action_type" : "RenameDatasetAction",
+          "output_name" : "output1"
+        }
+      },
+      "content_id" : "toolshed.g2.bx.psu.edu/repos/iuc/artic_guppyplex/artic_guppyplex/1.2.1+galaxy0",
+      "tool_id" : "toolshed.g2.bx.psu.edu/repos/iuc/artic_guppyplex/artic_guppyplex/1.2.1+galaxy0"
+    }
+  },
+  "tags" : [ ],
+  "uuid" : "cd155e0b-be9f-415c-9a57-8aa942a0bdda",
+  "version" : 8
+}
