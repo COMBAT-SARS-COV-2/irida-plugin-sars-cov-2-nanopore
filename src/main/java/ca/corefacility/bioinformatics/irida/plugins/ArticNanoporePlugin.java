@@ -74,7 +74,7 @@ public class ArticNanoporePlugin extends Plugin {
 		 */
 		@Override
 		public UUID getDefaultWorkflowUUID() {
-			return UUID.fromString("ece298c1-cd9d-4aad-a6ce-a366bd5cbb9a");
+			return UUID.fromString("ece298c1-cd9d-4aad-a6ce-a366bd5cbb9b");
 		}
 
 		/*******************************************************************************
