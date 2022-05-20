@@ -1,0 +1,605 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "Artic Nanopore: Workflow for generating SARS-Cov2 consensus and variants from viral amplicon data. Us\nes iVar toolsuite.",
+    "format-version": "0.1",
+    "name": "ARTIC Nanopore (0.1.7)",
+    "steps": {
+        "0": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "sequence_reads_list_single"
+                }
+            ],
+            "label": "sequence_reads_list_single",
+            "name": "Input dataset collection",
+            "outputs": [],
+            "position": {
+                "bottom": 89.265625,
+                "height": 82.171875,
+                "left": 66.5625,
+                "right": 266.5625,
+                "top": 7.09375,
+                "width": 200,
+                "x": 66.5625,
+                "y": 7.09375
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false, \"collection_type\": \"list\"}",
+            "tool_version": null,
+            "type": "data_collection_input",
+            "uuid": "d40e5aa2-9dd5-4151-8018-e23bcc66bb00",
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 1,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
+                    "name": "reference"
+                }
+            ],
+            "label": "reference",
+            "name": "Input dataset",
+            "outputs": [],
+            "position": {
+                "bottom": 711.875,
+                "height": 61.78125,
+                "left": 344.5625,
+                "right": 544.5625,
+                "top": 650.09375,
+                "width": 200,
+                "x": 344.5625,
+                "y": 650.09375
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false}",
+            "tool_version": null,
+            "type": "data_input",
+            "uuid": "c2c70622-cc68-4fb1-b0b5-03830b43cc2a",
+            "workflow_outputs": []
+        },
+        "2": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/artic_guppyplex/artic_guppyplex/1.2.1+galaxy2",
+            "errors": null,
+            "id": 2,
+            "input_connections": {
+                "input|reads": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool ARTIC guppyplex",
+                    "name": "input"
+                }
+            ],
+            "label": null,
+            "name": "ARTIC guppyplex",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "bottom": 94.65625,
+                "height": 113.5625,
+                "left": 344.5625,
+                "right": 544.5625,
+                "top": -18.90625,
+                "width": 200,
+                "x": 344.5625,
+                "y": -18.90625
+            },
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "output"
+                },
+                "RenameDatasetActionoutput1": {
+                    "action_arguments": {
+                        "newname": "guppyplex_filtered.fastq"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "output1"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/artic_guppyplex/artic_guppyplex/1.2.1+galaxy2",
+            "tool_shed_repository": {
+                "changeset_revision": "372def2f8fd6",
+                "name": "artic_guppyplex",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"input\": {\"structure\": \"one_to_one\", \"__current_case__\": 0, \"reads\": {\"__class__\": \"RuntimeValue\"}}, \"max_length\": \"700\", \"min_length\": \"400\", \"min_quality\": \"7\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.2.1+galaxy2",
+            "type": "tool",
+            "uuid": "2c0cfe8f-7387-4a61-a1dd-9f1fbf119849",
+            "workflow_outputs": []
+        },
+        "3": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/artic_minion/artic_minion/1.2.1+galaxy0",
+            "errors": null,
+            "id": 3,
+            "input_connections": {
+                "read_file": {
+                    "id": 2,
+                    "output_name": "output"
+                },
+                "reference_source|reference": {
+                    "id": 1,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "ARTIC minion",
+            "outputs": [
+                {
+                    "name": "alignment_trimmed",
+                    "type": "bam"
+                },
+                {
+                    "name": "alignment_report",
+                    "type": "tabular"
+                },
+                {
+                    "name": "variants_merged_vcf",
+                    "type": "vcf_bgzip"
+                },
+                {
+                    "name": "variants_fail_vcf",
+                    "type": "vcf_bgzip"
+                },
+                {
+                    "name": "variants_pass_vcf",
+                    "type": "vcf_bgzip"
+                },
+                {
+                    "name": "consensus_fasta",
+                    "type": "fasta"
+                },
+                {
+                    "name": "coverage_mask",
+                    "type": "tabular"
+                },
+                {
+                    "name": "analysis_log",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "bottom": 641.640625,
+                "height": 662.546875,
+                "left": 622.5625,
+                "right": 822.5625,
+                "top": -20.90625,
+                "width": 200,
+                "x": 622.5625,
+                "y": -20.90625
+            },
+            "post_job_actions": {
+                "RenameDatasetActionalignment_report": {
+                    "action_arguments": {
+                        "newname": "alignment_report.tsv"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "alignment_report"
+                },
+                "RenameDatasetActionconsensus_fasta": {
+                    "action_arguments": {
+                        "newname": "consensus.fasta"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "consensus_fasta"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/artic_minion/artic_minion/1.2.1+galaxy0",
+            "tool_shed_repository": {
+                "changeset_revision": "6f52ebc01098",
+                "name": "artic_minion",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"bwa\": \"false\", \"medaka_model\": \"r941_min_high_g360\", \"normalise\": \"0\", \"primer_scheme_source\": {\"primer_scheme_source_selector\": \"tool_data_table\", \"__current_case__\": 0, \"primer_scheme_bedfile\": \"SARS-CoV-2-ARTICv1\"}, \"read_file\": {\"__class__\": \"ConnectedValue\"}, \"reference_source\": {\"reference_source_selector\": \"history\", \"__current_case__\": 1, \"reference\": {\"__class__\": \"ConnectedValue\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.2.1+galaxy0",
+            "type": "tool",
+            "uuid": "3e6ab12e-9646-4b2c-ae19-b8e216c5648f",
+            "workflow_outputs": [
+                {
+                    "label": "ARTIC minion on input dataset(s): variants pass",
+                    "output_name": "variants_pass_vcf",
+                    "uuid": "40b199ce-a8f0-474a-9e9a-7252f59faf31"
+                },
+                {
+                    "label": "ARTIC minion on input dataset(s): variants fail",
+                    "output_name": "variants_fail_vcf",
+                    "uuid": "e6bfbe10-db19-4fae-ac69-6f0bcc9ae66a"
+                },
+                {
+                    "label": "ARTIC minion on input dataset(s): medaka variant calls",
+                    "output_name": "variants_merged_vcf",
+                    "uuid": "dcaad796-ce0a-4043-ae4c-bf05dba2f211"
+                },
+                {
+                    "label": "ARTIC minion on input dataset(s): trimmed alignment",
+                    "output_name": "alignment_trimmed",
+                    "uuid": "bca4d75c-ae24-41dd-a642-7735039ee114"
+                },
+                {
+                    "label": "ARTIC minion on input dataset(s): alignment report",
+                    "output_name": "alignment_report",
+                    "uuid": "de320b9d-53c7-4008-b9af-1b84bf9a99fe"
+                },
+                {
+                    "label": "ARTIC minion on input dataset(s): analysis log",
+                    "output_name": "analysis_log",
+                    "uuid": "1f463259-be5d-47fc-9c0f-30b76217bb4a"
+                },
+                {
+                    "label": "ARTIC minion on input dataset(s): consensus coverage mask",
+                    "output_name": "coverage_mask",
+                    "uuid": "0cf4501e-92d6-4c2c-930a-4d2ad9df2c47"
+                },
+                {
+                    "label": "ARTIC minion on input dataset(s): consensus sequence",
+                    "output_name": "consensus_fasta",
+                    "uuid": "9743a6c5-5f54-474b-a21d-91d1ed2d1d2b"
+                }
+            ]
+        },
+        "4": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sed_tool/1.1.1",
+            "errors": null,
+            "id": 4,
+            "input_connections": {
+                "infile": {
+                    "id": 3,
+                    "output_name": "consensus_fasta"
+                }
+            },
+            "inputs": [],
+            "label": "Masked Genome",
+            "name": "Text transformation",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "bottom": 250.265625,
+                "height": 93.171875,
+                "left": 910.5625,
+                "right": 1110.5625,
+                "top": 157.09375,
+                "width": 200,
+                "x": 910.5625,
+                "y": 157.09375
+            },
+            "post_job_actions": {},
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sed_tool/1.1.1",
+            "tool_shed_repository": {
+                "changeset_revision": "f46f0e4f75c4",
+                "name": "text_processing",
+                "owner": "bgruening",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"adv_opts\": {\"adv_opts_selector\": \"basic\", \"__current_case__\": 0}, \"code\": \"/^>/s/Consensus_(.*)_threshold_.*/\\\\1/\", \"infile\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.1.1",
+            "type": "tool",
+            "uuid": "626dcfbc-fbd5-47ae-92f0-43005fe645ef",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "d1ab63e4-c12e-4da1-a4c5-d4346945b332"
+                }
+            ]
+        },
+        "5": {
+            "annotation": "",
+            "content_id": "testtoolshed.g2.bx.psu.edu/repos/sanbi-uwc/qc/qc_cog_uk/0.1.1",
+            "errors": null,
+            "id": 5,
+            "input_connections": {
+                "input_bam": {
+                    "id": 3,
+                    "output_name": "alignment_trimmed"
+                },
+                "input_cons_fasta": {
+                    "id": 3,
+                    "output_name": "consensus_fasta"
+                },
+                "input_ref": {
+                    "id": 1,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Quality Control (COG-UK QC)",
+            "outputs": [
+                {
+                    "name": "output1",
+                    "type": "csv"
+                },
+                {
+                    "name": "output2",
+                    "type": "json"
+                },
+                {
+                    "name": "output3",
+                    "type": "png"
+                }
+            ],
+            "position": {
+                "bottom": 665.953125,
+                "height": 377.859375,
+                "left": 910.5625,
+                "right": 1110.5625,
+                "top": 288.09375,
+                "width": 200,
+                "x": 910.5625,
+                "y": 288.09375
+            },
+            "post_job_actions": {
+                "RenameDatasetActionoutput1": {
+                    "action_arguments": {
+                        "newname": "qc.csv"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "output1"
+                },
+                "RenameDatasetActionoutput2": {
+                    "action_arguments": {
+                        "newname": "qc.json"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "output2"
+                },
+                "RenameDatasetActionoutput3": {
+                    "action_arguments": {
+                        "newname": "qc.png"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "output3"
+                }
+            },
+            "tool_id": "testtoolshed.g2.bx.psu.edu/repos/sanbi-uwc/qc/qc_cog_uk/0.1.1",
+            "tool_shed_repository": {
+                "changeset_revision": "6bdec8c62aec",
+                "name": "qc",
+                "owner": "sanbi-uwc",
+                "tool_shed": "testtoolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"input_bam\": {\"__class__\": \"ConnectedValue\"}, \"input_cons_fasta\": {\"__class__\": \"ConnectedValue\"}, \"input_ref\": {\"__class__\": \"ConnectedValue\"}, \"qc_type_conditional\": {\"qc_type\": \"--nanopore\", \"__current_case__\": 1}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.1.1",
+            "type": "tool",
+            "uuid": "bd598acd-90d8-4351-9f01-cbea99d892cd",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output3",
+                    "uuid": "89a84100-fdf9-4b98-b1f5-de78b52bbd74"
+                },
+                {
+                    "label": null,
+                    "output_name": "output1",
+                    "uuid": "1444fc3c-431e-4bb9-9dc4-c9d74d9ff320"
+                },
+                {
+                    "label": null,
+                    "output_name": "output2",
+                    "uuid": "71350252-cc5e-4cd7-b4a6-5d55a23ac4d1"
+                }
+            ]
+        },
+        "6": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/jvarkit_wgscoverageplotter/jvarkit_wgscoverageplotter/20201223+galaxy0",
+            "errors": null,
+            "id": 6,
+            "input_connections": {
+                "alignment_file": {
+                    "id": 3,
+                    "output_name": "alignment_trimmed"
+                },
+                "reference|hist_genome": {
+                    "id": 1,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "BAM Coverage Plotter",
+            "outputs": [
+                {
+                    "name": "plot_output",
+                    "type": "png"
+                }
+            ],
+            "position": {
+                "bottom": 828.046875,
+                "height": 143.953125,
+                "left": 914.5625,
+                "right": 1114.5625,
+                "top": 684.09375,
+                "width": 200,
+                "x": 914.5625,
+                "y": 684.09375
+            },
+            "post_job_actions": {
+                "RenameDatasetActionplot_output": {
+                    "action_arguments": {
+                        "newname": "plot_output.svg"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "plot_output"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/jvarkit_wgscoverageplotter/jvarkit_wgscoverageplotter/20201223+galaxy0",
+            "tool_shed_repository": {
+                "changeset_revision": "ac048a34cac3",
+                "name": "jvarkit_wgscoverageplotter",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"adv\": {\"disable_paired_overlap\": \"false\", \"include_contig_regex\": \"\", \"min_mapq\": \"1\", \"max_depth\": \"-1\", \"clip\": \"false\", \"min_contig_length\": \"0\", \"percentile\": \"median\", \"points\": \"false\", \"skip_contig_regex\": \"\", \"sample_filter\": {\"filter_by_sample\": \"false\", \"__current_case__\": 1}}, \"alignment_file\": {\"__class__\": \"ConnectedValue\"}, \"dimension\": \"1000x500\", \"format\": \"SVG\", \"reference\": {\"source\": \"history\", \"__current_case__\": 1, \"hist_genome\": {\"__class__\": \"ConnectedValue\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "20201223+galaxy0",
+            "type": "tool",
+            "uuid": "d20c20de-b5b5-4570-acd6-7469c3980353",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "plot_output",
+                    "uuid": "48dbbd1a-b969-49f6-a37f-7d0bd1078745"
+                }
+            ]
+        },
+        "7": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/pangolin/pangolin/4.0.5+galaxy2",
+            "errors": null,
+            "id": 7,
+            "input_connections": {
+                "input1": {
+                    "id": 4,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Pangolin",
+                    "name": "input1"
+                }
+            ],
+            "label": null,
+            "name": "Pangolin",
+            "outputs": [
+                {
+                    "name": "output1",
+                    "type": "tabular"
+                }
+            ],
+            "position": {
+                "bottom": 282.65625,
+                "height": 113.5625,
+                "left": 1188.5625,
+                "right": 1388.5625,
+                "top": 169.09375,
+                "width": 200,
+                "x": 1188.5625,
+                "y": 169.09375
+            },
+            "post_job_actions": {
+                "RenameDatasetActionoutput1": {
+                    "action_arguments": {
+                        "newname": "pangolin.tsv"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "output1"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/pangolin/pangolin/4.0.5+galaxy2",
+            "tool_shed_repository": {
+                "changeset_revision": "81804a978fc0",
+                "name": "pangolin",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"alignment\": \"false\", \"db\": {\"source\": \"download\", \"__current_case__\": 0}, \"engine\": {\"analysis_mode\": \"usher\", \"__current_case__\": 0, \"use_assignment_cache\": \"false\"}, \"expanded_lineage\": \"false\", \"include_header\": \"true\", \"input1\": {\"__class__\": \"RuntimeValue\"}, \"max_ambig\": \"0.5\", \"min_length\": \"10000\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "4.0.5+galaxy2",
+            "type": "tool",
+            "uuid": "bd736cc4-dc54-4a8e-a04e-e02df3a339f7",
+            "workflow_outputs": [
+                {
+                    "label": "pangolin on input dataset(s)",
+                    "output_name": "output1",
+                    "uuid": "65495e07-5ec5-446f-885c-b3d59b5d8f74"
+                }
+            ]
+        },
+        "8": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/nextclade/nextclade/1.11.0+galaxy0",
+            "errors": null,
+            "id": 8,
+            "input_connections": {
+                "input_fasta": {
+                    "id": 4,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Nextclade",
+                    "name": "input_fasta"
+                }
+            ],
+            "label": null,
+            "name": "Nextclade",
+            "outputs": [
+                {
+                    "name": "report_tsv",
+                    "type": "tabular"
+                }
+            ],
+            "position": {
+                "bottom": 475.4375,
+                "height": 154.34375,
+                "left": 1188.5625,
+                "right": 1388.5625,
+                "top": 321.09375,
+                "width": 200,
+                "x": 1188.5625,
+                "y": 321.09375
+            },
+            "post_job_actions": {
+                "RenameDatasetActionreport_tsv": {
+                    "action_arguments": {
+                        "newname": "nextclade.tsv"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "report_tsv"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/nextclade/nextclade/1.11.0+galaxy0",
+            "tool_shed_repository": {
+                "changeset_revision": "9e10ba792be2",
+                "name": "nextclade",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"adv\": {\"advanced_options\": \"no\", \"__current_case__\": 1}, \"include_header\": \"true\", \"input_fasta\": {\"__class__\": \"RuntimeValue\"}, \"organism\": \"sars-cov-2\", \"outputs\": [\"report_tsv\"], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.11.0+galaxy0",
+            "type": "tool",
+            "uuid": "0fbd8186-db09-4085-88a5-d232c7172a5f",
+            "workflow_outputs": [
+                {
+                    "label": "Nextclade on input dataset(s) (TSV report)",
+                    "output_name": "report_tsv",
+                    "uuid": "d221afff-499d-47f0-8ced-50032fdde43e"
+                }
+            ]
+        }
+    },
+    "tags": [],
+    "uuid": "6bcc7994-6d2f-441e-a4b3-cf7db3005ade",
+    "version": 4
+}
