@@ -19,7 +19,7 @@
 		<plugin.requires.runtime>1.1.0</plugin.requires.runtime>
 
 		<!-- The version of IRIDA your plugin must be compiled against. -->
-		<irida.version.compiletime>21.09.2</irida.version.compiletime>
+		<irida.version.compiletime>21.05</irida.version.compiletime>
 		
 		<!-- Version of the pf4j dependency -->
 		<pf4j.version>2.4.0</pf4j.version>
