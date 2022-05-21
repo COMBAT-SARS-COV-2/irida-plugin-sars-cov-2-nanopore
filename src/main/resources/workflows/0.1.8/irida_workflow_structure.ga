@@ -20,14 +20,14 @@
             "name": "Input dataset collection",
             "outputs": [],
             "position": {
-                "bottom": -56.578125,
+                "bottom": 103.890625,
                 "height": 82.171875,
-                "left": -63.78125,
-                "right": 136.21875,
-                "top": -138.75,
+                "left": 154.96875,
+                "right": 354.96875,
+                "top": 21.71875,
                 "width": 200,
-                "x": -63.78125,
-                "y": -138.75
+                "x": 154.96875,
+                "y": 21.71875
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"collection_type\": \"list\"}",
@@ -52,14 +52,14 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "bottom": 998.03125,
+                "bottom": 1158.5,
                 "height": 61.78125,
-                "left": 214.21875,
-                "right": 414.21875,
-                "top": 936.25,
+                "left": 432.96875,
+                "right": 632.96875,
+                "top": 1096.71875,
                 "width": 200,
-                "x": 214.21875,
-                "y": 936.25
+                "x": 432.96875,
+                "y": 1096.71875
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false}",
@@ -89,21 +89,16 @@
                 }
             ],
             "position": {
-                "bottom": -41.1875,
+                "bottom": 119.28125,
                 "height": 113.5625,
-                "left": 214.21875,
-                "right": 414.21875,
-                "top": -154.75,
+                "left": 432.96875,
+                "right": 632.96875,
+                "top": 5.71875,
                 "width": 200,
-                "x": 214.21875,
-                "y": -154.75
+                "x": 432.96875,
+                "y": 5.71875
             },
             "post_job_actions": {
-                "HideDatasetActionoutput": {
-                    "action_arguments": {},
-                    "action_type": "HideDatasetAction",
-                    "output_name": "output"
-                },
                 "RenameDatasetActionoutput1": {
                     "action_arguments": {
                         "newname": "guppyplex_filtered.fastq"
@@ -123,7 +118,13 @@
             "tool_version": "1.2.1+galaxy2",
             "type": "tool",
             "uuid": "2c0cfe8f-7387-4a61-a1dd-9f1fbf119849",
-            "workflow_outputs": []
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "b9656349-ac5d-4f55-b0a3-831f22165ce4"
+                }
+            ]
         },
         "3": {
             "annotation": "",
@@ -163,14 +164,14 @@
                 }
             ],
             "position": {
-                "bottom": 155.546875,
+                "bottom": 316.015625,
                 "height": 296.296875,
-                "left": 492.21875,
-                "right": 692.21875,
-                "top": -140.75,
+                "left": 710.96875,
+                "right": 910.96875,
+                "top": 19.71875,
                 "width": 200,
-                "x": 492.21875,
-                "y": -140.75
+                "x": 710.96875,
+                "y": 19.71875
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/fastqc/fastqc/0.73+galaxy0",
@@ -188,12 +189,12 @@
                 {
                     "label": "FastQC on input dataset(s): RawData",
                     "output_name": "text_file",
-                    "uuid": "984b253d-ac42-4e57-aa85-e7f99f3a94e4"
+                    "uuid": "373f3e1b-61cb-4767-ad06-b525949c40d9"
                 },
                 {
                     "label": "FastQC on input dataset(s): Webpage",
                     "output_name": "html_file",
-                    "uuid": "5af19428-098e-4758-abad-fd7babf8d0bf"
+                    "uuid": "a9404b10-66d8-42c3-b409-ce3fa15937c8"
                 }
             ]
         },
@@ -212,16 +213,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool ARTIC minion",
-                    "name": "read_file"
-                },
-                {
-                    "description": "runtime parameter for tool ARTIC minion",
-                    "name": "reference_source"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "ARTIC minion",
             "outputs": [
@@ -259,14 +251,14 @@
                 }
             ],
             "position": {
-                "bottom": 920.796875,
+                "bottom": 1081.265625,
                 "height": 662.546875,
-                "left": 492.21875,
-                "right": 692.21875,
-                "top": 258.25,
+                "left": 710.96875,
+                "right": 910.96875,
+                "top": 418.71875,
                 "width": 200,
-                "x": 492.21875,
-                "y": 258.25
+                "x": 710.96875,
+                "y": 418.71875
             },
             "post_job_actions": {
                 "RenameDatasetActionalignment_report": {
@@ -298,50 +290,50 @@
                 "owner": "iuc",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"bwa\": \"false\", \"medaka_model\": \"r941_min_high_g360\", \"normalise\": \"0\", \"primer_scheme_source\": {\"primer_scheme_source_selector\": \"tool_data_table\", \"__current_case__\": 0, \"primer_scheme_bedfile\": \"SARS-CoV-2-ARTICv3\"}, \"read_file\": {\"__class__\": \"RuntimeValue\"}, \"reference_source\": {\"reference_source_selector\": \"history\", \"__current_case__\": 1, \"reference\": {\"__class__\": \"RuntimeValue\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"bwa\": \"false\", \"medaka_model\": \"r941_min_high_g360\", \"normalise\": \"0\", \"primer_scheme_source\": {\"primer_scheme_source_selector\": \"tool_data_table\", \"__current_case__\": 0, \"primer_scheme_bedfile\": \"SARS-CoV-2-ARTICv3\"}, \"read_file\": {\"__class__\": \"ConnectedValue\"}, \"reference_source\": {\"reference_source_selector\": \"history\", \"__current_case__\": 1, \"reference\": {\"__class__\": \"ConnectedValue\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.2.1+galaxy0",
             "type": "tool",
             "uuid": "8b5b51d0-c016-4d49-9360-c01db07f5487",
             "workflow_outputs": [
                 {
-                    "label": null,
-                    "output_name": "alignment_trimmed",
-                    "uuid": "2d556eb4-a7e4-42ed-8ac6-300feb7ab506"
-                },
-                {
-                    "label": "ARTIC minion on input dataset(s): alignment report",
-                    "output_name": "alignment_report",
-                    "uuid": "9d562ef8-22af-4b95-9044-4767d893c39b"
-                },
-                {
-                    "label": "ARTIC minion on input dataset(s): medaka variant calls",
-                    "output_name": "variants_merged_vcf",
-                    "uuid": "6b882ba3-8dd1-40bc-8108-199d84cb7fb1"
-                },
-                {
-                    "label": "ARTIC minion on input dataset(s): analysis log",
-                    "output_name": "analysis_log",
-                    "uuid": "a8a04a2c-5551-42ae-b409-e36618bf51a0"
-                },
-                {
-                    "label": "ARTIC minion on input dataset(s): consensus coverage mask",
-                    "output_name": "coverage_mask",
-                    "uuid": "7f2737bb-1204-42f0-961a-2d3ccaa43d50"
-                },
-                {
-                    "label": "ARTIC minion on input dataset(s): consensus sequence",
-                    "output_name": "consensus_fasta",
-                    "uuid": "c5030f7d-2e92-4dff-88ff-f988f5396431"
-                },
-                {
                     "label": "ARTIC minion on input dataset(s): variants pass",
                     "output_name": "variants_pass_vcf",
-                    "uuid": "5e82a2a3-cf1d-4d59-b888-024df24a9f35"
+                    "uuid": "8a4e9565-e543-4924-af98-46f33a2a7725"
                 },
                 {
                     "label": "ARTIC minion on input dataset(s): variants fail",
                     "output_name": "variants_fail_vcf",
-                    "uuid": "44cb897e-7130-4cbb-bc72-23f388897ba9"
+                    "uuid": "b92a9246-3292-40fe-ba21-bf31823136de"
+                },
+                {
+                    "label": null,
+                    "output_name": "alignment_trimmed",
+                    "uuid": "9add7a4d-3972-46fa-9d44-a7d8b9e1074c"
+                },
+                {
+                    "label": "ARTIC minion on input dataset(s): alignment report",
+                    "output_name": "alignment_report",
+                    "uuid": "d4519886-89a0-4e15-b541-848344c9fb4f"
+                },
+                {
+                    "label": "ARTIC minion on input dataset(s): medaka variant calls",
+                    "output_name": "variants_merged_vcf",
+                    "uuid": "8e45c057-b46f-420d-aaec-9bf0bed1b262"
+                },
+                {
+                    "label": "ARTIC minion on input dataset(s): analysis log",
+                    "output_name": "analysis_log",
+                    "uuid": "d948a344-b8f5-449d-9c6b-bab73f62a74f"
+                },
+                {
+                    "label": "ARTIC minion on input dataset(s): consensus coverage mask",
+                    "output_name": "coverage_mask",
+                    "uuid": "ee98f48f-004f-4c84-95e5-5dd8b58840e0"
+                },
+                {
+                    "label": "ARTIC minion on input dataset(s): consensus sequence",
+                    "output_name": "consensus_fasta",
+                    "uuid": "f30d7b2e-ef48-4b43-b84c-7294f4e54bc6"
                 }
             ]
         },
@@ -371,14 +363,14 @@
                 }
             ],
             "position": {
-                "bottom": 171.203125,
+                "bottom": 331.671875,
                 "height": 143.953125,
-                "left": 770.21875,
-                "right": 970.21875,
-                "top": 27.25,
+                "left": 988.96875,
+                "right": 1188.96875,
+                "top": 187.71875,
                 "width": 200,
-                "x": 770.21875,
-                "y": 27.25
+                "x": 988.96875,
+                "y": 187.71875
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/bcftools_view/bcftools_view/1.10",
@@ -396,7 +388,7 @@
                 {
                     "label": null,
                     "output_name": "output_file",
-                    "uuid": "646e865e-9fa4-48f0-9ba6-43af3692e805"
+                    "uuid": "bd7866a5-dbe7-46d4-abbc-11c819df39a0"
                 }
             ]
         },
@@ -421,14 +413,14 @@
                 }
             ],
             "position": {
-                "bottom": 597.421875,
+                "bottom": 757.890625,
                 "height": 93.171875,
-                "left": 770.21875,
-                "right": 970.21875,
-                "top": 504.25,
+                "left": 988.96875,
+                "right": 1188.96875,
+                "top": 664.71875,
                 "width": 200,
-                "x": 770.21875,
-                "y": 504.25
+                "x": 988.96875,
+                "y": 664.71875
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sed_tool/1.1.1",
@@ -446,7 +438,7 @@
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "e1db9e62-b360-49df-9d15-56dd27d24ec6"
+                    "uuid": "e1004e1d-c036-4a14-99ef-2192ba32f051"
                 }
             ]
         },
@@ -471,14 +463,14 @@
                 }
             ],
             "position": {
-                "bottom": 857.375,
+                "bottom": 1017.84375,
                 "height": 195.125,
-                "left": 770.21875,
-                "right": 970.21875,
-                "top": 662.25,
+                "left": 988.96875,
+                "right": 1188.96875,
+                "top": 822.71875,
                 "width": 200,
-                "x": 770.21875,
-                "y": 662.25
+                "x": 988.96875,
+                "y": 822.71875
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/devteam/picard/picard_AddOrReplaceReadGroups/2.18.2.1",
@@ -496,7 +488,7 @@
                 {
                     "label": "AddOrReplaceReadGroups on input dataset(s): BAM with replaced/modified readgroups",
                     "output_name": "outFile",
-                    "uuid": "679b41a9-bd91-444d-aeef-d815ec21df82"
+                    "uuid": "7897110a-1c9f-4c94-9e55-41efbb2b76f7"
                 }
             ]
         },
@@ -515,16 +507,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool BAM Coverage Plotter",
-                    "name": "alignment_file"
-                },
-                {
-                    "description": "runtime parameter for tool BAM Coverage Plotter",
-                    "name": "reference"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "BAM Coverage Plotter",
             "outputs": [
@@ -534,14 +517,14 @@
                 }
             ],
             "position": {
-                "bottom": 1039.203125,
+                "bottom": 1199.671875,
                 "height": 143.953125,
-                "left": 770.21875,
-                "right": 970.21875,
-                "top": 895.25,
+                "left": 988.96875,
+                "right": 1188.96875,
+                "top": 1055.71875,
                 "width": 200,
-                "x": 770.21875,
-                "y": 895.25
+                "x": 988.96875,
+                "y": 1055.71875
             },
             "post_job_actions": {
                 "RenameDatasetActionplot_output": {
@@ -559,7 +542,7 @@
                 "owner": "iuc",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"adv\": {\"disable_paired_overlap\": \"false\", \"include_contig_regex\": \"\", \"min_mapq\": \"1\", \"max_depth\": \"-1\", \"clip\": \"false\", \"min_contig_length\": \"0\", \"percentile\": \"median\", \"points\": \"false\", \"skip_contig_regex\": \"\", \"sample_filter\": {\"filter_by_sample\": \"false\", \"__current_case__\": 1}}, \"alignment_file\": {\"__class__\": \"RuntimeValue\"}, \"dimension\": \"1000x500\", \"format\": \"PNG\", \"reference\": {\"source\": \"history\", \"__current_case__\": 1, \"hist_genome\": {\"__class__\": \"RuntimeValue\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"adv\": {\"disable_paired_overlap\": \"false\", \"include_contig_regex\": \"\", \"min_mapq\": \"1\", \"max_depth\": \"-1\", \"clip\": \"false\", \"min_contig_length\": \"0\", \"percentile\": \"median\", \"points\": \"false\", \"skip_contig_regex\": \"\", \"sample_filter\": {\"filter_by_sample\": \"false\", \"__current_case__\": 1}}, \"alignment_file\": {\"__class__\": \"ConnectedValue\"}, \"dimension\": \"1000x500\", \"format\": \"PNG\", \"reference\": {\"source\": \"history\", \"__current_case__\": 1, \"hist_genome\": {\"__class__\": \"ConnectedValue\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "20201223+galaxy0",
             "type": "tool",
             "uuid": "5310758e-e946-48c6-9d88-62b3d62eab33",
@@ -567,7 +550,7 @@
                 {
                     "label": null,
                     "output_name": "plot_output",
-                    "uuid": "a6c35ddf-5930-4d10-b464-06bd9048c48e"
+                    "uuid": "be83b0bc-c4fc-4c27-b9c1-5e81e2155cc4"
                 }
             ]
         },
@@ -609,16 +592,24 @@
                 }
             ],
             "position": {
-                "bottom": 333.9375,
-                "height": 306.6875,
-                "left": 1048.21875,
-                "right": 1248.21875,
-                "top": 27.25,
+                "bottom": 474.015625,
+                "height": 286.296875,
+                "left": 1266.96875,
+                "right": 1466.96875,
+                "top": 187.71875,
                 "width": 200,
-                "x": 1048.21875,
-                "y": 27.25
+                "x": 1266.96875,
+                "y": 187.71875
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "RenameDatasetActionsnpeff_output": {
+                    "action_arguments": {
+                        "newname": "snpeff_variants.vcf"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "snpeff_output"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/snpeff_sars_cov_2/snpeff_sars_cov_2/4.5covid19",
             "tool_shed_repository": {
                 "changeset_revision": "2a3a00c1fa0a",
@@ -629,17 +620,17 @@
             "tool_state": "{\"annotations\": null, \"chr\": \"\", \"csvStats\": \"false\", \"filter\": {\"specificEffects\": \"no\", \"__current_case__\": 0}, \"filterOut\": null, \"generate_stats\": \"true\", \"genome_version\": \"NC_045512.2\", \"input\": {\"__class__\": \"RuntimeValue\"}, \"inputFormat\": \"vcf\", \"intervals\": {\"__class__\": \"RuntimeValue\"}, \"noLog\": \"true\", \"offset\": \"default\", \"outputConditional\": {\"outputFormat\": \"vcf\", \"__current_case__\": 0}, \"transcripts\": {\"__class__\": \"RuntimeValue\"}, \"udLength\": \"0\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "4.5covid19",
             "type": "tool",
-            "uuid": "6d0bbd3e-9385-451c-bcb6-59499fd4e278",
+            "uuid": "a61354c8-cad6-4c93-8997-fdc2d4b36bfa",
             "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "snpeff_output",
+                    "uuid": "68664ac9-5adb-4b0b-8765-0a3916e8e8a7"
+                },
                 {
                     "label": "SnpEff eff: on input dataset(s) - HTML stats",
                     "output_name": "statsFile",
-                    "uuid": "bc6648c1-4771-4d96-8f9f-4aa1b8b7ac78"
-                },
-                {
-                    "label": "snpeff_variants.vcf",
-                    "output_name": "snpeff_output",
-                    "uuid": "8c65edec-13c6-472a-997c-ed0a7fb84a81"
+                    "uuid": "c265a8a7-47cc-4d10-a266-c62fa9a81a03"
                 }
             ]
         },
@@ -664,14 +655,14 @@
                 }
             ],
             "position": {
-                "bottom": 464.8125,
+                "bottom": 625.28125,
                 "height": 113.5625,
-                "left": 1048.21875,
-                "right": 1248.21875,
-                "top": 351.25,
+                "left": 1266.96875,
+                "right": 1466.96875,
+                "top": 511.71875,
                 "width": 200,
-                "x": 1048.21875,
-                "y": 351.25
+                "x": 1266.96875,
+                "y": 511.71875
             },
             "post_job_actions": {
                 "RenameDatasetActionoutput1": {
@@ -697,7 +688,7 @@
                 {
                     "label": "pangolin on input dataset(s)",
                     "output_name": "output1",
-                    "uuid": "af14121a-9e41-400c-894e-dff15e05bbc7"
+                    "uuid": "ef39c682-4eba-49ce-a564-6ca1483f587c"
                 }
             ]
         },
@@ -722,14 +713,14 @@
                 }
             ],
             "position": {
-                "bottom": 657.59375,
+                "bottom": 818.0625,
                 "height": 154.34375,
-                "left": 1048.21875,
-                "right": 1248.21875,
-                "top": 503.25,
+                "left": 1266.96875,
+                "right": 1466.96875,
+                "top": 663.71875,
                 "width": 200,
-                "x": 1048.21875,
-                "y": 503.25
+                "x": 1266.96875,
+                "y": 663.71875
             },
             "post_job_actions": {
                 "RenameDatasetActionreport_tsv": {
@@ -755,7 +746,7 @@
                 {
                     "label": "Nextclade on input dataset(s) (TSV report)",
                     "output_name": "report_tsv",
-                    "uuid": "5e98a550-da8a-4591-a56a-66c2c112a4da"
+                    "uuid": "2f589300-f788-4936-bb80-3ac871d1b386"
                 }
             ]
         },
@@ -784,14 +775,14 @@
                 }
             ],
             "position": {
-                "bottom": 900.375,
+                "bottom": 1060.84375,
                 "height": 205.125,
-                "left": 1048.21875,
-                "right": 1248.21875,
-                "top": 695.25,
+                "left": 1266.96875,
+                "right": 1466.96875,
+                "top": 855.71875,
                 "width": 200,
-                "x": 1048.21875,
-                "y": 695.25
+                "x": 1266.96875,
+                "y": 855.71875
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/qualimap_bamqc/qualimap_bamqc/2.2.2d+galaxy3",
@@ -807,14 +798,14 @@
             "uuid": "34a14732-f38a-4bd8-b2cf-153c903923da",
             "workflow_outputs": [
                 {
-                    "label": "Raw data for QualiMap BamQC on input dataset(s)",
-                    "output_name": "raw_data",
-                    "uuid": "07bde618-35af-43eb-b3f9-e28f21c6fba6"
-                },
-                {
                     "label": "QualiMap BamQC report on input dataset(s)",
                     "output_name": "output_html",
-                    "uuid": "93ad5207-c99c-4cdb-8373-36f0e784b8a4"
+                    "uuid": "f328fcbf-f591-4c74-b89b-2690d61a8df7"
+                },
+                {
+                    "label": "Raw data for QualiMap BamQC on input dataset(s)",
+                    "output_name": "raw_data",
+                    "uuid": "e78b67af-20e0-4208-86d7-e3e005e6f2f1"
                 }
             ]
         },
@@ -847,14 +838,14 @@
                 }
             ],
             "position": {
-                "bottom": 940.765625,
+                "bottom": 1101.234375,
                 "height": 235.515625,
-                "left": 1326.21875,
-                "right": 1526.21875,
-                "top": 705.25,
+                "left": 1544.96875,
+                "right": 1744.96875,
+                "top": 865.71875,
                 "width": 200,
-                "x": 1326.21875,
-                "y": 705.25
+                "x": 1544.96875,
+                "y": 865.71875
             },
             "post_job_actions": {
                 "RenameDatasetActionhtml_report": {
@@ -872,25 +863,25 @@
                 "owner": "iuc",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"comment\": \"\", \"export\": \"false\", \"flat\": \"false\", \"results\": [{\"__index__\": 0, \"software_cond\": {\"software\": \"qualimap\", \"__current_case__\": 20, \"input\": {\"__class__\": \"RuntimeValue\"}}}, {\"__index__\": 1, \"software_cond\": {\"software\": \"fastqc\", \"__current_case__\": 8, \"output\": [{\"__index__\": 0, \"type\": \"data\", \"input\": {\"__class__\": \"RuntimeValue\"}}]}}], \"saveLog\": \"false\", \"title\": \"\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"comment\": \"\", \"export\": \"false\", \"flat\": \"false\", \"results\": [{\"__index__\": 0, \"software_cond\": {\"software\": \"qualimap\", \"__current_case__\": 20, \"input\": {\"__class__\": \"ConnectedValue\"}}}, {\"__index__\": 1, \"software_cond\": {\"software\": \"fastqc\", \"__current_case__\": 8, \"output\": [{\"__index__\": 0, \"type\": \"data\", \"input\": {\"__class__\": \"ConnectedValue\"}}]}}], \"saveLog\": \"false\", \"title\": \"\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.11+galaxy0",
             "type": "tool",
             "uuid": "964eaa2f-bf39-4d88-b8c8-0a5bae1be8e8",
             "workflow_outputs": [
                 {
-                    "label": null,
-                    "output_name": "html_report",
-                    "uuid": "ffd6547b-3048-4a60-8593-add2adc64875"
-                },
-                {
                     "label": "MultiQC on input dataset(s): Stats",
                     "output_name": "stats",
-                    "uuid": "295d87ac-7978-4588-8364-90010f0b53cb"
+                    "uuid": "90e16c2b-0d60-4bfb-9daa-d9951ed96b9f"
+                },
+                {
+                    "label": null,
+                    "output_name": "html_report",
+                    "uuid": "040fd778-e5a5-4ccf-acad-09375447f4dd"
                 }
             ]
         }
     },
     "tags": [],
-    "uuid": "9eac987d-4d7b-4971-86e8-6cbdae339f2d",
+    "uuid": "864660c2-a2bf-4156-bf99-66577ba6541a",
     "version": 1
 }
