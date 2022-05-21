@@ -17,7 +17,7 @@
       <toolParameter toolId="2c0cfe8f-7387-4a61-a1dd-9f1fbf119849" parameterName="max_length" label="Maximum Read Length" type="integer"/>
     </parameter>
     <parameter name="guppyplex_min_quality" defaultValue="7">
-      <toolParameter toolId="2c0cfe8f-7387-4a61-a1dd-9f1fbf119849" parameterName="min_length" label="Minumum Mean Read Quality" type="integer"/>
+      <toolParameter toolId="2c0cfe8f-7387-4a61-a1dd-9f1fbf119849" parameterName="min_quality" label="Minumum Mean Read Quality" type="integer"/>
     </parameter>
     <parameter name="artic_minion-3-medaka_model" defaultValue="r941_min_high_g360">
       <toolParameter toolId="3e6ab12e-9646-4b2c-ae19-b8e216c5648f" parameterName="medaka_model" label="Medaka model" type="text"/>
