@@ -45,7 +45,6 @@
     </parameter>
   </parameters>
   <outputs>
-    <output name="alignment_report.tsv" fileName="alignment_report.tsv"/>
     <output name="consensus.fasta" fileName="consensus.fasta"/>
     <output name="plot_output.png" fileName="plot_output.png"/>
     <output name="pangolin.tsv" fileName="pangolin.tsv"/>
