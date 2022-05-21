@@ -37,13 +37,10 @@
     <parameter name="jvarkit_wgscoverageplotter-6-adv.points" defaultValue="false">
       <toolParameter toolId="d20c20de-b5b5-4570-acd6-7469c3980353" parameterName="adv.points" label="Plot coverage using points instead of areas" type="boolean"/>
     </parameter>
-    <parameter name="jvarkit_wgscoverageplotter-6-format" defaultValue="PNG">
-      <toolParameter toolId="d20c20de-b5b5-4570-acd6-7469c3980353" parameterName="format" label="Output format" type="select"/>
-    </parameter>
     <parameter name="jvarkit_wgscoverageplotter-6-adv.clip" defaultValue="false">
       <toolParameter toolId="d20c20de-b5b5-4570-acd6-7469c3980353" parameterName="adv.clip" label="Clip the plot at the y-axis limit" type="boolean"/>
     </parameter>
-    <parameter name="pangolin-7-db.source" defaultValue="download">
+    <parameter name="pangolin-7-db.source" defaultValue="default">
       <toolParameter toolId="474e8502-8774-4224-8f5f-505bb73378db" parameterName="db.source" label="pangoLEARN source" type="select"/>
     </parameter>
   </parameters>
