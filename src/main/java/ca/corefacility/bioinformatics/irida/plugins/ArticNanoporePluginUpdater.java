@@ -34,15 +34,6 @@ import ca.corefacility.bioinformatics.irida.service.sample.SampleService;
 import ca.corefacility.bioinformatics.irida.service.workflow.IridaWorkflowsService;
 
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-class QCReport {
-    public float pct_N_bases;
-    public float pct_covered_bases;
-    public float num_aligned_reads;
-	public float longest_no_N_run;
-}
-
-
 class MetadataValue {
     public String header;
     public String value;
@@ -65,7 +56,6 @@ class MetadataValue {
 public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 	private static final Logger logger = LoggerFactory.getLogger( ArticNanoporePluginUpdater.class);
 
-	private static final String QC_FILE = "qc.json";
 	private static final String NEXT_CLADE_FILE = "nextclade.tsv";
 	private static final String PANGOLIN_FILE = "pangolin.tsv";
 
@@ -127,34 +117,6 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 		return dataMap;
 	}
 	
-	/**
-	 * Gets the qc results from the given output file.
-	 * 
-	 * @param qcFilePath The QC output file containing the results.
-	 * @param analysis        The {@link AnalysisSubmission} containing the results.
-	 * @return A {@link Map} storing the results from staramr, keyed by the metadata
-	 *         field name.
-	 * @throws IOException             If there was an issue reading the file.
-	 * @throws PostProcessingException If there was an issue parsing the file.
-	 */
-	private Map<String, PipelineProvidedMetadataEntry> getQCResults(Path qcFilePath,
-			AnalysisSubmission analysis) throws IOException, PostProcessingException {
-		
-		ObjectMapper mapper = new ObjectMapper();
-		Map<String, PipelineProvidedMetadataEntry> results = new HashMap<>();
-		
-		@SuppressWarnings("resource")
-		String scannedFile = new Scanner(new BufferedReader(new FileReader(qcFilePath.toFile()))).useDelimiter("\\Z").next();
-		QCReport qc_results = mapper.readValue(scannedFile, QCReport.class);
-
-		results.put("pct_N_bases", new PipelineProvidedMetadataEntry(Float.toString(qc_results.pct_N_bases), "Percentage N Bases", analysis));
-		results.put("pct_covered_bases", new PipelineProvidedMetadataEntry(Float.toString(qc_results.pct_covered_bases), "Percentage Covered Bases", analysis));
-		results.put("num_aligned_reads", new PipelineProvidedMetadataEntry(Float.toString(qc_results.num_aligned_reads), "Number of Aligned Reads", analysis));
-		results.put("longest_no_N_run", new PipelineProvidedMetadataEntry(Float.toString(qc_results.longest_no_N_run), "Longest of Runs", analysis));
-		
-		return results;
-	}
-
 	/**
 	 * Gets the nextclade results from the given output file.
 	 * 
@@ -281,11 +243,9 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 		final Sample sample = samples.iterator().next();
 
 		// extracts paths to the analysis result files
-		AnalysisOutputFile qcFile = analysis.getAnalysis().getAnalysisOutputFile(QC_FILE);
 		AnalysisOutputFile nextCladeFile = analysis.getAnalysis().getAnalysisOutputFile(NEXT_CLADE_FILE);
 		AnalysisOutputFile pangolinFile = analysis.getAnalysis().getAnalysisOutputFile(PANGOLIN_FILE);
 		
-		Path qcFilePath = qcFile.getFile();
 		Path nextCladeFilePath = nextCladeFile.getFile();
 		Path pangolinFilePath = pangolinFile.getFile(); 
 		
@@ -294,11 +254,10 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 			IridaWorkflow iridaWorkflow = iridaWorkflowsService.getIridaWorkflow(analysis.getWorkflowId());
 			String workflowVersion = iridaWorkflow.getWorkflowDescription().getVersion();
 
-			Map<String, PipelineProvidedMetadataEntry> qcResult = getQCResults(qcFilePath, analysis);
 			Map<String, PipelineProvidedMetadataEntry> nextcladeResult = getNextCladeResults(nextCladeFilePath, analysis);
 			Map<String, PipelineProvidedMetadataEntry> pangolinResult = getPangolinResults(pangolinFilePath, analysis);
 
-			List<Map<String, PipelineProvidedMetadataEntry>> resultsList = Arrays.asList(qcResult, nextcladeResult, pangolinResult);
+			List<Map<String, PipelineProvidedMetadataEntry>> resultsList = Arrays.asList(nextcladeResult, pangolinResult);
 			logger.debug("# Result List" + resultsList);
 
 			for (Map<String, PipelineProvidedMetadataEntry> result : resultsList) {
