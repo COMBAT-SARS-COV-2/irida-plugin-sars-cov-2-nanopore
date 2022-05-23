@@ -152,21 +152,21 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 		} else {
 			dataMap = getDataMapForLine(columnNames, line, nextcladeFilePath, analysis);
 		}
-		results.put("clade", new PipelineProvidedMetadataEntry(dataMap.get("clade"), "Clades", analysis));
-		results.put("aaSubstitutions", new PipelineProvidedMetadataEntry(dataMap.get("aaSubstitutions"), "Amino Acids Substitutions", analysis));
-		results.put("substitutions", new PipelineProvidedMetadataEntry(dataMap.get("substitutions"), "Nucleotide Variants", analysis));
-		results.put("aaDeletions", new PipelineProvidedMetadataEntry(dataMap.get("aaDeletions"), "Amino Acids Deletions", analysis));
-		results.put("deletions", new PipelineProvidedMetadataEntry(dataMap.get("deletions"), "Nucleotide Deletions", analysis));
-		results.put("insertions", new PipelineProvidedMetadataEntry(dataMap.get("insertions"), "Nucleotide Insertions", analysis));
-		results.put("overallQC", new PipelineProvidedMetadataEntry(dataMap.get("qc.overallStatus"), "Nextclade Quality Control Status", analysis));
-		results.put("overallQCscore", new PipelineProvidedMetadataEntry(dataMap.get("qc.overallScore"), "Nextclade Quality Control Score", analysis));
-		results.put("missingBases", new PipelineProvidedMetadataEntry(dataMap.get("totalMissing"), "Missing (N) Bases", analysis));
-		results.put("missingDataQC", new PipelineProvidedMetadataEntry(dataMap.get("qc.missingData.status"), "Missing Data QC status", analysis));
-		results.put("mixedSitesQC", new PipelineProvidedMetadataEntry(dataMap.get("qc.mixedSites.status"), "Mixed Sites QC status", analysis));
-		results.put("privateMutationsQC", new PipelineProvidedMetadataEntry(dataMap.get("qc.privateMutations.status"), "Private Mutations QC status", analysis));
-		results.put("snpClustersQC", new PipelineProvidedMetadataEntry(dataMap.get("qc.snpClusters.status"), "SNP Clusters QC status", analysis));
-		results.put("frameShiftQC", new PipelineProvidedMetadataEntry(dataMap.get("qc.frameShift.status"), "Frame Shift QC status", analysis));
-		results.put("stopCodonsQC", new PipelineProvidedMetadataEntry(dataMap.get("qc.stopCodons.status"), "Stop Codons QC status", analysis));
+		results.put("clade", new PipelineProvidedMetadataEntry(dataMap.getOrDefault("clade", ""), "Clades", analysis));
+		results.put("aaSubstitutions", new PipelineProvidedMetadataEntry(dataMap.getOrDefault("aaSubstitutions", ""), "Amino Acids Substitutions", analysis));
+		results.put("substitutions", new PipelineProvidedMetadataEntry(dataMap.getOrDefault("substitutions", ""), "Nucleotide Variants", analysis));
+		results.put("aaDeletions", new PipelineProvidedMetadataEntry(dataMap.getOrDefault("aaDeletions", ""), "Amino Acids Deletions", analysis));
+		results.put("deletions", new PipelineProvidedMetadataEntry(dataMap.getOrDefault("deletions", ""), "Nucleotide Deletions", analysis));
+		results.put("insertions", new PipelineProvidedMetadataEntry(dataMap.getOrDefault("insertions", ""), "Nucleotide Insertions", analysis));
+		results.put("overallQC", new PipelineProvidedMetadataEntry(dataMap.getOrDefault("qc.overallStatus", ""), "Nextclade Quality Control Status", analysis));
+		results.put("overallQCscore", new PipelineProvidedMetadataEntry(dataMap.getOrDefault("qc.overallScore", ""), "Nextclade Quality Control Score", analysis));
+		results.put("missingBases", new PipelineProvidedMetadataEntry(dataMap.getOrDefault("totalMissing", ""), "Missing (N) Bases", analysis));
+		results.put("missingDataQC", new PipelineProvidedMetadataEntry(dataMap.getOrDefault("qc.missingData.status", ""), "Missing Data QC status", analysis));
+		results.put("mixedSitesQC", new PipelineProvidedMetadataEntry(dataMap.getOrDefault("qc.mixedSites.status", ""), "Mixed Sites QC status", analysis));
+		results.put("privateMutationsQC", new PipelineProvidedMetadataEntry(dataMap.getOrDefault("qc.privateMutations.status", ""), "Private Mutations QC status", analysis));
+		results.put("snpClustersQC", new PipelineProvidedMetadataEntry(dataMap.getOrDefault("qc.snpClusters.status", ""), "SNP Clusters QC status", analysis));
+		results.put("frameShiftQC", new PipelineProvidedMetadataEntry(dataMap.getOrDefault("qc.frameShift.status", ""), "Frame Shift QC status", analysis));
+		results.put("stopCodonsQC", new PipelineProvidedMetadataEntry(dataMap.getOrDefault("qc.stopCodons.status", ""), "Stop Codons QC status", analysis));
 		line = reader.readLine();
 		
 		if (line == null) {
@@ -213,7 +213,7 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 			dataMap = getDataMapForLine(columnNames, line, pangolinFilePath, analysis);
 		}
 		logger.debug("# DataMap: " + dataMap);
-		results.put("lineage", new PipelineProvidedMetadataEntry(dataMap.get("lineage"), "Lineage", analysis));
+		results.put("lineage", new PipelineProvidedMetadataEntry(dataMap.getOrDefault("lineage", ""), "Lineage", analysis));
 		logger.debug("# Results: " + results);
 
 		line = reader.readLine();
