@@ -155,7 +155,7 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 		results.put("aaSubstitutions", new PipelineProvidedMetadataEntry(dataMap.get("aaSubstitutions"), "Amino Acids Substitutions", analysis));
 		results.put("substitutions", new PipelineProvidedMetadataEntry(dataMap.get("substitutions"), "Variants", analysis));
 		results.put("clade", new PipelineProvidedMetadataEntry(dataMap.get("clade"), "Clades", analysis));
-		results.put("nextcladeQC", new PipelineProvidedMetadataEntry(dataMap.get("qc.overallStatus"), "Overall Nextclade QC", analysis))
+		results.put("nextcladeQC", new PipelineProvidedMetadataEntry(dataMap.get("qc.overallStatus"), "Overall Nextclade QC", analysis));
 		
 		line = reader.readLine();
 		
