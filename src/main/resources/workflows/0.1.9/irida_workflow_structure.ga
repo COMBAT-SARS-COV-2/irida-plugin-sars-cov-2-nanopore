@@ -662,7 +662,7 @@
                 "owner": "iuc",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"adv\": {\"advanced_options\": \"no\", \"__current_case__\": 1}, \"db\": {\"source\": \"cached\", \"__current_case__\": 0, \"release\": null}, \"include_header\": \"true\", \"input_fasta\": {\"__class__\": \"ConnectedValue\"}, \"organism\": \"sars-cov-2\", \"outputs\": [\"report_tsv\"], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"adv\": {\"advanced_options\": \"no\", \"__current_case__\": 1}, \"db\": {\"source\": \"download\", \"__current_case__\": 0, \"release\": null}, \"include_header\": \"true\", \"input_fasta\": {\"__class__\": \"ConnectedValue\"}, \"organism\": \"sars-cov-2\", \"outputs\": [\"report_tsv\"], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "2.7.0+galaxy0",
             "type": "tool",
             "uuid": "0fbd8186-db09-4085-88a5-d232c7172a5f",
