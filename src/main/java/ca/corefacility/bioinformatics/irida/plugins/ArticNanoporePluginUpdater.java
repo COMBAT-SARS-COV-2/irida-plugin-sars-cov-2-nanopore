@@ -283,7 +283,7 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 
 			for (Map<String, PipelineProvidedMetadataEntry> result : resultsList) {
 				for (String fieldName : result.keySet()) {
-					stringEntries.put(appendVersion(result.get(fieldName).getType(), workflowVersion),
+					stringEntries.put(result.get(fieldName).getType()),
 							result.get(fieldName));
 				}
 			}
