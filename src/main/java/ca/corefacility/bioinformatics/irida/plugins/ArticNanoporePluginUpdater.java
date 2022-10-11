@@ -33,18 +33,16 @@ import ca.corefacility.bioinformatics.irida.service.sample.MetadataTemplateServi
 import ca.corefacility.bioinformatics.irida.service.sample.SampleService;
 import ca.corefacility.bioinformatics.irida.service.workflow.IridaWorkflowsService;
 
-
 class MetadataValue {
-    public String header;
-    public String value;
+	public String header;
+	public String value;
 
-    MetadataValue(String header, String value) {
-        this.header = header;
-        this.value = value;	
-    }
+	MetadataValue(String header, String value) {
+		this.header = header;
+		this.value = value;
+	}
 
 }
-
 
 /**
  * This implements a class used to perform post-processing on the analysis
@@ -54,17 +52,16 @@ class MetadataValue {
  * or the README.md file in this project for more details.
  */
 public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
-	private static final Logger logger = LoggerFactory.getLogger( ArticNanoporePluginUpdater.class);
+	private static final Logger logger = LoggerFactory.getLogger(ArticNanoporePluginUpdater.class);
 
 	private static final String NEXT_CLADE_FILE = "nextclade.tsv";
 	private static final String PANGOLIN_FILE = "pangolin.tsv";
 
 	private static final Splitter SPLITTER = Splitter.on('\t');
-	
+
 	private final MetadataTemplateService metadataTemplateService;
 	private final SampleService sampleService;
 	private final IridaWorkflowsService iridaWorkflowsService;
-
 
 	/**
 	 * Builds a new {@link ArticNanoporePluginUpdater} with the given services.
@@ -79,7 +76,7 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 		this.sampleService = sampleService;
 		this.iridaWorkflowsService = iridaWorkflowsService;
 	}
-	
+
 	/**
 	 * Parses a line of the results file and gets a Map linking the column to the
 	 * value in the line. (e.g., "N50 value" => "100").
@@ -96,7 +93,7 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 	 * @return A Map linking the column to the value for the line.
 	 * @throws PostProcessingException If there was an error parsing the results.
 	 */
-	
+
 	private Map<String, String> getDataMapForLine(List<String> columnNames, String line,
 			Path resultsFile, AnalysisSubmission analysis) throws PostProcessingException {
 		Map<String, String> dataMap = new HashMap<>();
@@ -110,18 +107,20 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 					+ "] and number of fields [" + values.size() + "] in results file [" + resultsFile + "]");
 		}
 
-		// only process up to numDataColumns, because of the issue with nextclade errors column mentioned above
+		// only process up to numDataColumns, because of the issue with nextclade errors
+		// column mentioned above
 		for (int i = 0; i < numDataColumns; i++) {
 			dataMap.put(columnNames.get(i), values.get(i));
 		}
 		return dataMap;
 	}
-	
+
 	/**
 	 * Gets the nextclade results from the given output file.
 	 * 
 	 * @param nextcladeFilePath The nextclade output file containing the results.
-	 * @param analysis        The {@link AnalysisSubmission} containing the results.
+	 * @param analysis          The {@link AnalysisSubmission} containing the
+	 *                          results.
 	 * @return A {@link Map} storing the results from staramr, keyed by the metadata
 	 *         field name.
 	 * @throws IOException             If there was an issue reading the file.
@@ -138,40 +137,55 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 		BufferedReader reader = new BufferedReader(new FileReader(nextcladeFilePath.toFile()));
 		String line = reader.readLine();
 		List<String> columnNames = SPLITTER.splitToList(line);
-		
+
 		if (columnNames.size() < MIN_TOKENS) {
-			throw new PostProcessingException("Invalid number of columns in nextclade results file [" + nextcladeFilePath
-					+ "], expected at least [" + MIN_TOKENS + "] got [" + columnNames.size() + "]");
+			throw new PostProcessingException(
+					"Invalid number of columns in nextclade results file [" + nextcladeFilePath
+							+ "], expected at least [" + MIN_TOKENS + "] got [" + columnNames.size() + "]");
 		}
 
 		line = reader.readLine();
 		if (line == null || line.length() == 0) {
 			dataMap = new HashMap<>();
 			logger.info(
-					"Got empty results for nextclade file [" + nextcladeFilePath + "] for analysis submission " + analysis);
+					"Got empty results for nextclade file [" + nextcladeFilePath + "] for analysis submission "
+							+ analysis);
 		} else {
 			dataMap = getDataMapForLine(columnNames, line, nextcladeFilePath, analysis);
 		}
-		results.put("aaSubstitutions", new PipelineProvidedMetadataEntry(dataMap.get("aaSubstitutions"), "Amino Acids Substitutions", analysis));
-		results.put("substitutions", new PipelineProvidedMetadataEntry(dataMap.get("substitutions"), "Variants", analysis));
-		results.put("clade", new PipelineProvidedMetadataEntry(dataMap.get("clade"), "Clades", analysis));
-		results.put("nextcladeQC", new PipelineProvidedMetadataEntry(dataMap.get("qc.overallStatus"), "Overall Nextclade QC", analysis));
-		
+		results.put("clade", new PipelineProvidedMetadataEntry(dataMap.get("clade"), "Clade", analysis));
+		results.put("Nextclade_pango",
+				new PipelineProvidedMetadataEntry(dataMap.get("Nextclade_pango"), "Lineage (Nextclade)", analysis));
+		results.put("aaSubstitutions", new PipelineProvidedMetadataEntry(dataMap.get("aaSubstitutions"),
+				"Amino Acids Substitutions", analysis));
+		results.put("substitutions",
+				new PipelineProvidedMetadataEntry(dataMap.get("substitutions"), "Variants", analysis));
+		results.put("nextcladeQC",
+				new PipelineProvidedMetadataEntry(dataMap.get("qc.overallStatus"), "Overall Nextclade QC", analysis));
+		results.put("aaDeletions",
+				new PipelineProvidedMetadataEntry(dataMap.get("aaDeletions"), "Amino Acids Deletions", analysis));
+		results.put("deletions",
+				new PipelineProvidedMetadataEntry(dataMap.get("deletions"), "Nucleotide Deletions", analysis));
+		results.put("aaInsertions",
+				new PipelineProvidedMetadataEntry(dataMap.get("deletions"), "Nucleotide Deletions", analysis));
+
 		line = reader.readLine();
-		
+
 		if (line == null) {
 			return results;
 		} else {
-			throw new PostProcessingException("Invalid number of results in nextclade results file [" + nextcladeFilePath
-					+ "], expected only one line of results but got multiple lines");
+			throw new PostProcessingException(
+					"Invalid number of results in nextclade results file [" + nextcladeFilePath
+							+ "], expected only one line of results but got multiple lines");
 		}
 	}
 
-/**
+	/**
 	 * Gets the pangolin results from the given output file.
 	 * 
 	 * @param pangolinFilePath The nextclade output file containing the results.
-	 * @param analysis        The {@link AnalysisSubmission} containing the results.
+	 * @param analysis         The {@link AnalysisSubmission} containing the
+	 *                         results.
 	 * @return A {@link Map} storing the results from staramr, keyed by the metadata
 	 *         field name.
 	 * @throws IOException             If there was an issue reading the file.
@@ -188,7 +202,7 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 		BufferedReader reader = new BufferedReader(new FileReader(pangolinFilePath.toFile()));
 		String line = reader.readLine();
 		List<String> columnNames = SPLITTER.splitToList(line);
-		
+
 		if (columnNames.size() < MIN_TOKENS) {
 			throw new PostProcessingException("Invalid number of columns in pangolin results file [" + pangolinFilePath
 					+ "], expected at least [" + MIN_TOKENS + "] got [" + columnNames.size() + "]");
@@ -198,7 +212,8 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 		if (line == null || line.length() == 0) {
 			dataMap = new HashMap<>();
 			logger.info(
-					"Got empty results for pangolin file [" + pangolinFilePath + "] for analysis submission " + analysis);
+					"Got empty results for pangolin file [" + pangolinFilePath + "] for analysis submission "
+							+ analysis);
 		} else {
 			dataMap = getDataMapForLine(columnNames, line, pangolinFilePath, analysis);
 		}
@@ -207,7 +222,7 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 		logger.debug("# Results: " + results);
 
 		line = reader.readLine();
-		
+
 		if (line == null) {
 			return results;
 		} else {
@@ -215,7 +230,6 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 					+ "], expected only one line of results but got multiple lines");
 		}
 	}
-
 
 	/**
 	 * Code to perform the actual update of the {@link Sample}s passed in the
@@ -246,33 +260,36 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 		// extracts paths to the analysis result files
 		AnalysisOutputFile nextCladeFile = analysis.getAnalysis().getAnalysisOutputFile(NEXT_CLADE_FILE);
 		AnalysisOutputFile pangolinFile = analysis.getAnalysis().getAnalysisOutputFile(PANGOLIN_FILE);
-		
+
 		Path nextCladeFilePath = nextCladeFile.getFile();
-		Path pangolinFilePath = pangolinFile.getFile(); 
-		
+		Path pangolinFilePath = pangolinFile.getFile();
+
 		Map<String, MetadataEntry> stringEntries = new HashMap<>();
 		try {
 			IridaWorkflow iridaWorkflow = iridaWorkflowsService.getIridaWorkflow(analysis.getWorkflowId());
 			String workflowVersion = iridaWorkflow.getWorkflowDescription().getVersion();
 
-			Map<String, PipelineProvidedMetadataEntry> nextcladeResult = getNextCladeResults(nextCladeFilePath, analysis);
+			Map<String, PipelineProvidedMetadataEntry> nextcladeResult = getNextCladeResults(nextCladeFilePath,
+					analysis);
 			Map<String, PipelineProvidedMetadataEntry> pangolinResult = getPangolinResults(pangolinFilePath, analysis);
 
-			List<Map<String, PipelineProvidedMetadataEntry>> resultsList = Arrays.asList(nextcladeResult, pangolinResult);
+			List<Map<String, PipelineProvidedMetadataEntry>> resultsList = Arrays.asList(nextcladeResult,
+					pangolinResult);
 			logger.debug("# Result List" + resultsList);
 
 			for (Map<String, PipelineProvidedMetadataEntry> result : resultsList) {
 				for (String fieldName : result.keySet()) {
-					stringEntries.put(appendVersion(result.get(fieldName).getType(), workflowVersion), result.get(fieldName));
+					stringEntries.put(appendVersion(result.get(fieldName).getType(), workflowVersion),
+							result.get(fieldName));
 				}
 			}
 
 			Set<MetadataEntry> metadataSet = metadataTemplateService.convertMetadataStringsToSet(stringEntries);
 			sampleService.mergeSampleMetadata(sample, metadataSet);
-			
+
 		} catch (IOException e) {
 			logger.error("Got IOException", e);
-			throw new PostProcessingException("Error parsing JSON from results", e);		
+			throw new PostProcessingException("Error parsing JSON from results", e);
 		} catch (IridaWorkflowNotFoundException e) {
 			throw new PostProcessingException("Workflow not found, for id=" + analysis.getWorkflowId(), e);
 		} catch (Exception e) {
@@ -280,6 +297,7 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 			throw e;
 		}
 	}
+
 	/**
 	 * Appends the name and version together for a metadata field name.
 	 * 

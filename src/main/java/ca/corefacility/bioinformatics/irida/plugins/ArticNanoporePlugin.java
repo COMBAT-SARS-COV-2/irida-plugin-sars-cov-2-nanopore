@@ -74,7 +74,7 @@ public class ArticNanoporePlugin extends Plugin {
 		 */
 		@Override
 		public UUID getDefaultWorkflowUUID() {
-			return UUID.fromString("ece298c1-cd9d-4aad-a6ce-a366bd5cbb9c");
+			return UUID.fromString("ece298c1-cd9d-4aad-a6ce-a366bd5cbb9d");
 		}
 
 		/*******************************************************************************
@@ -120,11 +120,12 @@ public class ArticNanoporePlugin extends Plugin {
 		 * @return An {@link Optional} {@link AnalysisSampleUpdater} used to update
 		 *         metadata from the pipeline results.
 		 */
-		
+
 		@Override
 		public Optional<AnalysisSampleUpdater> getUpdater(MetadataTemplateService metadataTemplateService,
 				SampleService sampleService, IridaWorkflowsService iridaWorkflowsService) throws IridaPluginException {
-			return Optional.of(new ArticNanoporePluginUpdater(metadataTemplateService, sampleService, iridaWorkflowsService));
+			return Optional
+					.of(new ArticNanoporePluginUpdater(metadataTemplateService, sampleService, iridaWorkflowsService));
 		}
 	}
 }

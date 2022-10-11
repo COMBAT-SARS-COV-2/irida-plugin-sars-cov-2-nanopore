@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iridaWorkflow>
+ <id>ece298c1-cd9d-4aad-a6ce-a366bd5cbb9d</id>
+ <name>Artic Nanopore</name>
+  <version>0.1.9</version>
+  <analysisType>ARTIC_PIPELINE</analysisType>
+  <inputs>
+    <sequenceReadsSingle>sequence_reads_list_single</sequenceReadsSingle>
+    <reference>reference</reference>
+    <requiresSingleSample>true</requiresSingleSample>
+  </inputs>
+  <parameters>
+    <parameter name="guppyplex_min_length" defaultValue="400">
+      <toolParameter toolId="2c0cfe8f-7387-4a61-a1dd-9f1fbf119849" parameterName="min_length" label="Minumum Read Length" type="integer"/>
+    </parameter>
+    <parameter name="guppyplex_max_length" defaultValue="700">
+      <toolParameter toolId="2c0cfe8f-7387-4a61-a1dd-9f1fbf119849" parameterName="max_length" label="Maximum Read Length" type="integer"/>
+    </parameter>
+    <parameter name="guppyplex_min_quality" defaultValue="7">
+      <toolParameter toolId="2c0cfe8f-7387-4a61-a1dd-9f1fbf119849" parameterName="min_quality" label="Minumum Mean Read Quality" type="integer"/>
+    </parameter>
+    <parameter name="artic_minion-3-medaka_model" defaultValue="r941_min_high_g360">
+      <toolParameter toolId="3e6ab12e-9646-4b2c-ae19-b8e216c5648f" parameterName="medaka_model" label="Medaka model" type="text"/>
+    </parameter>
+    <parameter name="artic_minion-3-primer_scheme_source.primer_scheme_bedfile" required="true">
+      <dynamicSource>
+        <galaxyToolDataTable name="primer_scheme_bedfiles" displayColumn="name" parameterColumn="value" />
+      </dynamicSource>      
+      <toolParameter toolId="3e6ab12e-9646-4b2c-ae19-b8e216c5648f" parameterName="primer_scheme_source.primer_scheme_bedfile" label="Primer Scheme" type="data"/>
+    </parameter>
+    <parameter name="jvarkit_wgscoverageplotter-6-adv.min_mapq" defaultValue="1">
+      <toolParameter toolId="d20c20de-b5b5-4570-acd6-7469c3980353" parameterName="adv.min_mapq" label="Minimum mapping quality" type="integer"/>
+    </parameter>
+    <!-- <parameter name="jvarkit_wgscoverageplotter-6-adv.percentile" required="true">
+      <choices>
+        <choice name="median" value="median"/>
+        <choice name="average" value="average"/>
+        <choice name="min" value="min"/>
+        <choice name="max" value="max"/>
+      </choices>       -->
+      <toolParameter toolId="d20c20de-b5b5-4570-acd6-7469c3980353" parameterName="adv.percentile" label="How to bin the coverage under one pixel" type="select"/>
+    </parameter>
+    <parameter name="jvarkit_wgscoverageplotter-6-adv.max_depth" defaultValue="-1">
+      <toolParameter toolId="d20c20de-b5b5-4570-acd6-7469c3980353" parameterName="adv.max_depth" label="y-axis (depth) limit of the plot" type="integer"/>
+    </parameter>
+    <parameter name="jvarkit_wgscoverageplotter-6-adv.points" required="true">
+      <choices>
+        <choice name="false" value="false"/>
+        <choice name="true" value="true"/>
+      </choices>      
+      <toolParameter toolId="d20c20de-b5b5-4570-acd6-7469c3980353" parameterName="adv.points" label="Plot coverage using points instead of areas" type="boolean"/>
+    </parameter>
+    <parameter name="jvarkit_wgscoverageplotter-6-adv.clip" required="true">
+      <choices>
+        <choice name="false" value="false"/>
+        <choice name="true" value="true"/>
+      </choices>      
+      <toolParameter toolId="d20c20de-b5b5-4570-acd6-7469c3980353" parameterName="adv.clip" label="Clip the plot at the y-axis limit" type="boolean"/>
+    </parameter>
+    <!-- TODO: come up with a sensible way to configure the data sources for nextclade and pangolin -->
+  </parameters>
+  <outputs>
+    <output name="consensus.fasta" fileName="consensus.fasta"/>
+    <output name="plot_output.png" fileName="plot_output.png"/>
+    <output name="pangolin.tsv" fileName="pangolin.tsv"/>
+    <output name="nextclade.tsv" fileName="nextclade.tsv"/>
+    <output name="aligned_reads.bam" fileName="aligned_reads.bam"/>
+    <output name="snpeff_variants.vcf" fileName="snpeff_variants.vcf"/>
+    <output name="multiqc_output.html" fileName="multiqc_output.html"/>
+  </outputs>
+  <toolRepositories>
+    <repository>
+      <name>artic_guppyplex</name>
+      <owner>iuc</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>372def2f8fd6</revision>
+    </repository>
+    <repository>
+      <name>jvarkit_wgscoverageplotter</name>
+      <owner>iuc</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>ac048a34cac3</revision>
+    </repository>
+    <repository>
+      <name>artic_minion</name>
+      <owner>iuc</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>6f52ebc01098</revision>
+    </repository>
+    <repository>
+      <name>pangolin</name>
+      <owner>iuc</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>81804a978fc0</revision>
+    </repository>
+    <repository>
+      <name>text_processing</name>
+      <owner>bgruening</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>f46f0e4f75c4</revision>
+    </repository>
+    <repository>
+      <name>nextclade</name>
+      <owner>iuc</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>9e10ba792be2</revision>
+    </repository>
+    <repository>
+      <name>bcftools_view</name>
+      <owner>iuc</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>e1a2389af238</revision>
+    </repository>
+    <repository>
+      <name>snpeff_sars_cov_2</name>
+      <owner>iuc</owner>
+      <url>https://toolshed.g2.bx.psu.edu</url>
+      <revision>2a3a00c1fa0a</revision>
+    </repository>
+  </toolRepositories>
+</iridaWorkflow>
