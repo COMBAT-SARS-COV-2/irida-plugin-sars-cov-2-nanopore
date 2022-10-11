@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <iridaWorkflow>
  <id>ece298c1-cd9d-4aad-a6ce-a366bd5cbb9d</id>
- <name>Artic Nanopore</name>
+ <name>irida-sars-cov2-nanopore-plugin</name>
   <version>0.1.9</version>
   <analysisType>ARTIC_PIPELINE</analysisType>
   <inputs>
