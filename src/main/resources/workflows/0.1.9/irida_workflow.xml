@@ -37,9 +37,9 @@
         <choice name="average" value="average"/>
         <choice name="min" value="min"/>
         <choice name="max" value="max"/>
-      </choices>       -->
+      </choices> 
       <toolParameter toolId="d20c20de-b5b5-4570-acd6-7469c3980353" parameterName="adv.percentile" label="How to bin the coverage under one pixel" type="select"/>
-    </parameter>
+    </parameter>-->
     <parameter name="jvarkit_wgscoverageplotter-6-adv.max_depth" defaultValue="-1">
       <toolParameter toolId="d20c20de-b5b5-4570-acd6-7469c3980353" parameterName="adv.max_depth" label="y-axis (depth) limit of the plot" type="integer"/>
     </parameter>
