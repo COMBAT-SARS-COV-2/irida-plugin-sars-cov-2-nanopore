@@ -41,7 +41,7 @@
       <toolParameter toolId="d20c20de-b5b5-4570-acd6-7469c3980353" parameterName="adv.clip" label="Clip the plot at the y-axis limit" type="boolean"/>
     </parameter>
     <parameter name="pangolin-7-db.source" defaultValue="default">
-      <toolParameter toolId="474e8502-8774-4224-8f5f-505bb73378db" parameterName="db.source" label="pangoLEARN source" type="select"/>
+      <toolParameter toolId="474e8502-8774-4224-8f5f-505bb73378db" parameterName="db.source" label="Pangolin database source" type="select"/>
     </parameter>
   </parameters>
   <outputs>
