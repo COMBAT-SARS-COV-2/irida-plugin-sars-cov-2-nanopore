@@ -156,18 +156,22 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 		results.put("clade", new PipelineProvidedMetadataEntry(dataMap.get("clade"), "Clade", analysis));
 		results.put("Nextclade_pango",
 				new PipelineProvidedMetadataEntry(dataMap.get("Nextclade_pango"), "Lineage (Nextclade)", analysis));
-		results.put("aaSubstitutions", new PipelineProvidedMetadataEntry(dataMap.get("aaSubstitutions"),
-				"Amino Acids Substitutions", analysis));
-		results.put("substitutions",
-				new PipelineProvidedMetadataEntry(dataMap.get("substitutions"), "Variants", analysis));
 		results.put("nextcladeQC",
 				new PipelineProvidedMetadataEntry(dataMap.get("qc.overallStatus"), "Overall Nextclade QC", analysis));
+		results.put("aaSubstitutions", new PipelineProvidedMetadataEntry(dataMap.get("aaSubstitutions"),
+				"AA Substitutions", analysis));
+		results.put("substitutions",
+				new PipelineProvidedMetadataEntry(dataMap.get("substitutions"), "Variants", analysis));
+
 		results.put("aaDeletions",
-				new PipelineProvidedMetadataEntry(dataMap.get("aaDeletions"), "Amino Acids Deletions", analysis));
+				new PipelineProvidedMetadataEntry(dataMap.get("aaDeletions"), "AA Deletions", analysis));
 		results.put("deletions",
-				new PipelineProvidedMetadataEntry(dataMap.get("deletions"), "Nucleotide Deletions", analysis));
+				new PipelineProvidedMetadataEntry(dataMap.get("deletions"), "Deletions", analysis));
+
 		results.put("aaInsertions",
-				new PipelineProvidedMetadataEntry(dataMap.get("deletions"), "Nucleotide Deletions", analysis));
+				new PipelineProvidedMetadataEntry(dataMap.get("aaInsertions"), "AA Insertions", analysis));
+		results.put("insertions",
+				new PipelineProvidedMetadataEntry(dataMap.get("insertions"), "Insertions", analysis));
 
 		line = reader.readLine();
 
@@ -284,6 +288,7 @@ public class ArticNanoporePluginUpdater implements AnalysisSampleUpdater {
 				}
 			}
 
+			logger.debug("# stringEntries " + stringEntries.toString());
 			Set<MetadataEntry> metadataSet = metadataTemplateService.convertMetadataStringsToSet(stringEntries);
 			sampleService.mergeSampleMetadata(sample, metadataSet);
 
